@@ -1,0 +1,427 @@
+/* Variables */
+
+$nav-menu-responsive-breakpoint: $sd-screen-lg !default;
+$nav-menu-toggle-font-size: 1.5rem !default;
+$nav-menu-toggle-padding: 0.25em !default;
+$nav-menu-toggle-color: inherit !default;
+$nav-menu-toggle-color-hover: $nav-menu-toggle-color !default;
+$nav-menu-toggle-bar-color: currentColor !default;
+$nav-menu-toggle-bar-color-hover: $nav-menu-toggle-bar-color !default;
+$nav-menu-toggle-color-transition: 250ms !default;
+$nav-menu-toggle-bar-width: 1.75em !default;
+$nav-menu-toggle-bar-height: 0.2em !default;
+$nav-menu-toggle-bar-spacing: 0.5em !default;
+$nav-menu-toggle-bar-first-position: -$nav-menu-toggle-bar-spacing !default;
+$nav-menu-toggle-bar-last-position: $nav-menu-toggle-bar-spacing !default;
+$nav-menu-toggle-bar-border-radius: 1px !default;
+$nav-menu-toggle-height-computed: ceil($nav-menu-toggle-font-size * 1.01) !default;
+$nav-menu-toggle-position: right !default;
+$nav-menu-toggle-label-placement: reverse($nav-menu-toggle-position) !default;
+$nav-menu-toggle-label-text-transform: uppercase !default;
+$nav-menu-overlay-bg: #fff !default;
+$nav-menu-overlay-color: #000 !default;
+$nav-menu-overlay-padding-v: 2rem !default;
+$nav-menu-overlay-padding-h: 2rem !default;
+$nav-menu-overlay-padding: $nav-menu-overlay-padding-v $nav-menu-overlay-padding-h !default;
+@if type-of($nav-menu-overlay-padding) != 'list' {
+    $nav-menu-overlay-padding-v: $nav-menu-overlay-padding;
+    $nav-menu-overlay-padding-h: $nav-menu-overlay-padding;
+}
+$nav-menu-overlay-z-index: 9990 !default;
+$nav-menu-list-font-size: 2rem  !default;
+$nav-menu-list-link-padding-v: 0.25rem !default;
+$nav-menu-list-link-padding-h: 1rem !default;
+$nav-menu-list-link-padding: $nav-menu-list-link-padding-v $nav-menu-list-link-padding-h !default;
+$nav-menu-item-color: inherit !default;
+$nav-menu-item-color-hover: $nav-menu-item-color !default;
+$nav-menu-item-open-color: inherit !default;
+$nav-menu-current-item-color: inherit !default;
+$nav-menu-sub-list-font-size: .8em !default;
+$nav-menu-sub-list-open-font-size: .8em !default;
+$nav-menu-sub-list-padding: 1rem !default;
+$nav-menu-sub-list-handle-color: inherit !default;
+$nav-menu-sub-list-handle-font-size: 1em !default;
+$nav-menu-sub-list-handle-space: calc(#{$nav-menu-list-link-padding-h} * 0.5) !default;
+$nav-menu-sub-list-link-padding-v: calc(#{$nav-menu-list-link-padding-v} * 0.5) !default;
+$nav-menu-sub-list-item-color: inherit !default;
+$nav-menu-sub-list-item-color-hover: $nav-menu-sub-list-item-color !default;
+$nav-menu-sub-list-item-open-color: inherit !default;
+$nav-menu-sub-list-symbol: './images/svg-sprite/icon-arrow.svg' !default;
+$nav-menu-sub-list-symbol-size: 15px !default;
+$nav-menu-sub-list-open-symbol: $nav-menu-sub-list-symbol !default;
+$nav-menu-sub-list-open-symbol-transform: rotate(180deg) translateX(0) translateY(0) !default;
+
+$nav-menu-open-animation-in: background-in, reveal-in !default;
+$nav-menu-open-animation-out: background-out, reveal-out !default;
+$nav-menu-overlay-animation-in: slide-in !default;
+$nav-menu-overlay-animation-out: slide-out--up-viewport !default;
+$nav-menu-sub-list-animation-in: reveal-in !default;
+$nav-menu-sub-list-animation-out: reveal-out !default;
+$nav-menu-responsive-sub-list-animation-in: $nav-menu-sub-list-animation-in !default;
+$nav-menu-responsive-sub-list-animation-out: $nav-menu-sub-list-animation-out !default;
+
+// Nav Menu
+//
+// Set Design Component
+//
+// .nav-menu - Default, nav burger toggles menu overlay
+// .nav-menu--responsive - switches to traditional horizontal nav on larger screen
+//
+// markup:
+// <nav class="nav-menu {$modifiers}" style="min-height:200px">
+//     <sg-insert>4.2.3</sg-insert>
+//     <div class="nav-menu__overlay">
+//         <sg-insert>4.2.2-1</sg-insert>
+//     </div>
+// </nav>
+//
+// Styleguide 4.2
+
+// Nav Menu Overlay
+//
+// markup:
+// <nav class="nav-menu nav-menu--open nav-menu--opened">
+//     <sg-insert>4.2.3</sg-insert>
+//     <div class="nav-menu__overlay">
+//         <sg-insert>4.2.2-2</sg-insert>
+//     </div>
+// </nav>
+//
+// sg-wrapper:
+// <div class="sg-fixed sg-pattern-bg">
+//   <sg-wrapper-content/>
+// </div>
+//
+// Styleguide 4.2.1
+
+// Nav Menu List
+//
+// .nav-menu__item - Default, sub-menus closed
+// .nav-menu__item--open - Opened sub-menus
+//
+// markup:
+// <ul class="nav-menu__list">
+//     <li class="nav-menu__item"><a href="#">Home</a></li>
+//     <li class="nav-menu__item nav-menu__item--current"><a href="#">Tickets</a></li>
+//     <li class="nav-menu__item nav-menu__item--has-sub {$modifiers}"><a href="#">The Show</a>
+//         <ul class="nav-menu__sub-list">
+//             <li class="nav-menu__sub-item"><a href="#">About</a></li>
+//             <li class="nav-menu__sub-item"><a href="#">Cast &amp; Creative</a></li>
+//             <li class="nav-menu__sub-item"><a href="#">Media</a></li>
+//         </ul>
+//     </li>
+//     <li class="nav-menu__item"><a href="#">FAQ</a></li>
+//     <li class="nav-menu__item"><a href="#">Shop</a></li>
+// </ul>
+//
+// sg-wrapper:
+// <div class="sg-fixed-small sg-pattern-bg">
+//     <div class="nav-menu nav-menu--open nav-menu--opened">
+//         <div class="nav-menu__overlay">
+//             <sg-wrapper-content/>
+//         </div>
+//     </div>
+// </div>
+//
+// Styleguide 4.2.2
+
+// Nav Menu Toggle
+//
+// .nav-menu__toggle - Default, when overlay menu is closed
+// .nav-menu__toggle--open - Alias for when overlay is opened
+//
+// markup:
+// <button class="nav-menu__toggle js-nav-menu-toggle {$modifiers}" aria-label="Toggle navigation">
+//     <span class="nav-menu__toggle-label">Menu</span>
+//     <span class="nav-menu__toggle-bar"></span>
+// </button>
+//
+// sg-wrapper:
+// <div class="sg-slab--center">
+//     <div class="nav-menu">
+//         <sg-wrapper-content/>
+//     </div>
+// </div>
+//
+// Styleguide 4.2.3
+
+.nav-menu {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    &--open {
+        @include transition-set($nav-menu-open-animation-out, 0.5s);
+        overflow: visible;
+        position: fixed;
+        z-index: $nav-menu-overlay-z-index;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: $nav-menu-overlay-padding;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: $nav-menu-overlay-color;
+        background: $nav-menu-overlay-bg;
+    }
+
+    &--opened {
+        @include transition-set($nav-menu-open-animation-in, 0.2s);
+        max-height: 100vh;
+        background: $nav-menu-overlay-bg;
+    }
+
+    &--list-only {
+        display: block;
+    }
+
+    &__toggle {
+        @extend %btn-reset;
+        color: $nav-menu-toggle-color;
+        padding: $nav-menu-toggle-padding;
+        font-size: $nav-menu-toggle-font-size;
+        line-height: $nav-menu-toggle-height-computed;
+        z-index: $nav-menu-overlay-z-index + 1;
+        display: flex;
+        align-items: center;
+        transition: color $nav-menu-toggle-color-transition;
+        @if $nav-menu-toggle-label-placement == 'right' {
+            flex-flow: row-reverse;
+        }
+        &:hover,
+        &:active {
+            color: $nav-menu-toggle-color-hover;
+        }
+        .accessibility-on & {
+            &:focus {
+                color: $nav-menu-toggle-color-hover;
+            }
+        }
+        .nav-menu--open &,
+        .nav-menu__toggle--open & {
+            position: absolute;
+            top: var(--dynamic__navburger-top);
+            left: var(--dynamic__navburger-left);
+            transform: translateY(-50%);
+        }
+    }
+
+    &__toggle-label {
+        opacity: 1;
+        text-transform: $nav-menu-toggle-label-text-transform;
+        padding-#{reverse($nav-menu-toggle-label-placement)}: 2*$nav-menu-toggle-padding;
+        .nav-menu--open &,
+        .nav-menu__toggle--open & {
+            opacity: 0;
+            color: inherit;
+        }
+    }
+
+    &__toggle-bar {
+        margin: $nav-menu-toggle-bar-spacing 0;
+        background-color: $nav-menu-toggle-bar-color;
+        transition: background-color $nav-menu-toggle-color-transition;
+        &,
+        &:before,
+        &:after {
+            width: $nav-menu-toggle-bar-width;
+            height: $nav-menu-toggle-bar-height;
+            border-radius: $nav-menu-toggle-bar-border-radius;
+            transform: rotate(0deg);
+            transition: transform 0.25s ease-in-out, background-color $nav-menu-toggle-color-transition ease-in-out;
+        }
+        &:before,
+        &:after {
+            background-color: inherit;
+            content: '';
+            position: absolute;
+            display: block;
+        }
+        &:before {
+            top: $nav-menu-toggle-bar-first-position;
+
+        }
+        &:after {
+            top: $nav-menu-toggle-bar-last-position;
+        }
+        .nav-menu--open &,
+        .nav-menu__toggle--open & {
+            background-color: transparent !important;
+            &:before, &:after {
+                top: 0;
+                background-color: $nav-menu-toggle-bar-color;
+            }
+            &:before {
+                transform: rotate(45deg);
+            }
+            &:after {
+                transform: rotate(-45deg);
+            }
+        }
+        .nav-menu__toggle:hover & {
+            background-color: $nav-menu-toggle-bar-color-hover;
+        }
+    }
+
+    &__overlay {
+        visibility: hidden;
+        width: 100%;
+        backface-visibility: hidden;
+        text-align: center;
+        position: fixed;
+        pointer-events: auto;
+        .nav-menu--open &, .nav-menu--opened & {
+            visibility: visible;
+            margin: calc(#{$nav-menu-overlay-padding-v} + #{$nav-menu-toggle-height-computed}) 0;
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .nav-menu--open & {
+            @include transition-set($nav-menu-overlay-animation-out, 0.5s);
+        }
+        .nav-menu--opened & {
+            @include transition-set($nav-menu-overlay-animation-in, 0.3s);
+        }
+    }
+
+    &__list,
+    &__sub-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &__list {
+        font-size: $nav-menu-list-font-size;
+        .nav-menu--open & {
+            margin: 5px; //for focus outlines
+        }
+    }
+
+    &__sub-list {
+        font-size: $nav-menu-sub-list-font-size;
+        padding: $nav-menu-sub-list-padding;
+
+        .nav-menu--open &,
+        .nav-menu--list-only & {
+            @include transition-set($nav-menu-sub-list-animation-out);
+            font-size: $nav-menu-sub-list-open-font-size;
+            padding: 0;
+        }
+        .nav-menu--open .nav-menu__item--open &,
+        .nav-menu--list-only .nav-menu__item--open &{
+            @include transition-set($nav-menu-sub-list-animation-in);
+            margin-bottom: $nav-menu-list-link-padding-h;
+            &:focus-within {
+                overflow: visible;
+            }
+
+        }
+    }
+
+    &__item {
+        color: $nav-menu-item-color;
+        a {
+            display: block;
+        }
+        > a {
+            color: inherit;
+            padding: $nav-menu-list-link-padding;
+            &:hover {
+                color: $nav-menu-item-color-hover;
+            }
+        }
+        &--has-sub > a:after {
+            @if $nav-menu-sub-list-symbol {
+                content: url($nav-menu-sub-list-symbol);
+            }
+            font-size: $nav-menu-sub-list-handle-font-size;
+            line-height: 1em / $nav-menu-sub-list-handle-font-size;
+            display: inline-block;
+            color: $nav-menu-sub-list-handle-color;
+            position: absolute;
+            margin-left: $nav-menu-sub-list-handle-space;
+            width: $nav-menu-sub-list-symbol-size;
+            transform-origin: center;
+            transition: transform 0.2s cubic-bezier(0, 0.7, 0.3, 1);
+        }
+        &--open > a:after {
+            @if $nav-menu-sub-list-open-symbol {
+                content: url($nav-menu-sub-list-open-symbol);
+            }
+            transform: $nav-menu-sub-list-open-symbol-transform;
+        }
+        &--current,
+        &--has-current-sub {
+            > a {
+                color: $nav-menu-current-item-color;
+            }
+        }
+
+    }
+    &__sub-item {
+        color: $nav-menu-sub-list-item-open-color;
+        a {
+            color: inherit;
+            padding: $nav-menu-sub-list-link-padding-v $nav-menu-list-link-padding-h;
+            &:hover {
+                color: $nav-menu-sub-list-item-color-hover;
+            }
+        }
+        .nav-menu--open &,
+        .nav-menu--list-only & {
+            color: $nav-menu-item-open-color;
+        }
+    }
+
+    &--responsive {
+        @include breakpoint-custom($nav-menu-responsive-breakpoint) {
+            .nav-menu{
+                &__toggle {
+                    display: none;
+                }
+                &__overlay {
+                    position: static;
+                    height: auto;
+                    transform: none;
+                    transition: none;
+                    opacity: 1;
+                    visibility: visible;
+                    padding: 0;
+                    text-align: left;
+                }
+                &__list {
+                    display: flex;
+                    justify-content: center;
+                }
+                &__item {
+                    position: relative;
+                }
+                &__sub-list {
+                    position: absolute;
+                    display: block;
+                    z-index: $nav-menu-overlay-z-index;
+                    top: 100%;
+                    left: 0;
+                    min-width: 100%;
+                    white-space: nowrap;
+                    background: $nav-menu-overlay-bg;
+                    @include transition-set($nav-menu-responsive-sub-list-animation-out);
+                }
+                &__item--open .nav-menu__sub-list {
+                    @include transition-set($nav-menu-responsive-sub-list-animation-in);
+                }
+                &__item--has-sub {
+                    > a:after {
+                        display: none;
+                    }
+                }
+
+            }
+        }
+    }
+}

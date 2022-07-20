@@ -1,0 +1,20 @@
+{
+  "name": "estarossa",
+  "version": "1.0.0",
+  "repository": "git@github.com:vragosta/Estarossa.git",
+  "author": "DevAnime <devanimecards@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "dayjs": "^1.10.4",
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-count": "^1.0.0",
+    "gulp-jsbeautifier": "^2.1.2",
+    "gulp-rename": "^1.4.0",
+    "gulp-uglify": "^3.0.1",
+    "merge-stream": "^1.0.1",
+    "path": "^0.12.7"
+  }
+}

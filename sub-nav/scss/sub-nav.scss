@@ -1,0 +1,173 @@
+/* Variables */
+
+$sub-nav-breakpoint: $sd-screen-md !default;
+$sub-nav-font-size: 1rem !default;
+$sub-nav-link-padding: 5px 10px !default;
+$sub-nav-link-color: inherit !default;
+$sub-nav-link-background: #aaaaaa !default;
+$sub-nav-link-active-color: inherit !default;
+$sub-nav-link-active-background: #cccccc !default;
+$sub-nav-font-size: 1rem !default;
+$sub-nav-horizontal-item-spacing: 10px !default;
+$sub-nav-dropdown-color: inherit !default;
+$sub-nav-dropdown-closed-height: 2rem !default;
+$sub-nav-dropdown-symbol: './images/svg-sprite/icon-arrow.svg' !default;
+$sub-nav-dropdown-symbol-transition: transform .2s cubic-bezier(0, 0.7, 0.3, 1) !default;  // or false
+$sub-nav-dropdown-symbol-transform: rotate(-180deg) !default;  // or false
+
+/*
+Sub Nav
+
+Block on desktop, dropdown on mobile.
+
+.sub-nav--default - Default state, converts to dropdown at breakpoint
+.sub-nav--default.sub-nav--open - Default, Open Menu
+.sub-nav--dropdown - Dropdown Menu
+.sub-nav--dropdown.sub-nav--open - Dropdown Open Menu
+.sub-nav--horizontal - Horizontal Menu with overflow scroll
+
+markup:
+<div class="sub-nav {$modifiers}">
+    <ul class="sub-nav__list">
+        <li class="sub-nav__item"><a href="#">List Item</a></li>
+        <li class="sub-nav__item sub-nav__item--active"><a href="#">Active List Item</a></li>
+        <li class="sub-nav__item"><a href="#">List Item</a></li>
+        <li class="sub-nav__item"><a href="#">List Item</a></li>
+    </ul>
+</div>
+
+Styleguide 4.3
+*/
+
+@mixin sub-nav-dropdown {
+    @include transition-set(reveal-out);
+    visibility: visible;
+    max-height: $sub-nav-dropdown-closed-height;
+    .sub-nav__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .sub-nav__list:after {
+        @if $sub-nav-dropdown-symbol {
+            content: url($sub-nav-dropdown-symbol);
+        }
+        width: $sub-nav-dropdown-closed-height;
+        height: $sub-nav-dropdown-closed-height;
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        line-height: $sub-nav-dropdown-closed-height;
+        text-align: center;
+        @if $sub-nav-dropdown-symbol-transition {
+            transition: $sub-nav-dropdown-symbol-transition;
+        }
+    }
+    &.sub-nav--open {
+        @include transition-set(reveal-in);
+        .sub-nav__list:after {
+            @if $sub-nav-dropdown-symbol-transform {
+                transform: $sub-nav-dropdown-symbol-transform;
+            }
+        }
+    }
+    .sub-nav__item {
+        width: 100%;
+        cursor: pointer;
+    }
+    .sub-nav__item--active {
+        order: -1;
+    }
+
+}
+
+@mixin sub-nav-horizontal {
+    .sub-nav__list {
+        margin: -$sub-nav-horizontal-item-spacing;
+    }
+    .sub-nav__item {
+        text-align: center;
+        margin: $sub-nav-horizontal-item-spacing;
+        width: auto;
+        display: inline-block;
+        &:not(.sub-nav__item--active) {
+            cursor: pointer;
+        }
+    }
+
+}
+
+.sub-nav {
+    &__list {
+        margin: 0;
+        padding: 0;
+        font-size: $sub-nav-font-size;
+        list-style-type: none;
+        position: relative;
+    }
+    &__item {
+        display: block;
+    }
+    &__link {
+        display: block;
+        width: 100%;
+        padding: $sub-nav-link-padding;
+        color: $sub-nav-link-color;
+        background-color: $sub-nav-link-background;
+        .sub-nav--buttons & {
+            @extend %button !optional;
+        }
+        .sub-nav--buttons.sub-nav--secondary & {
+            @extend .button--secondary !optional;
+        }
+        .sub-nav--buttons.sub-nav--inverted & {
+            @extend .button--inverted !optional;
+        }
+        .sub-nav--text & {
+            background-color: transparent;
+        }
+
+        .sub-nav__item--active & {
+            color: $sub-nav-link-active-color;
+            background-color: $sub-nav-link-active-background;
+        }
+
+        &[tabindex="-1"] {
+            @if mixin-exists(sd-focus) {
+                @include sd-focus {
+                    outline: 1px dotted currentColor !important; // Overriding bootstrap _reboot.scss:62
+                }
+            }
+        }
+    }
+}
+
+.sub-nav--default {
+    @include breakpoint-max($sub-nav-breakpoint - 1) {
+        @include sub-nav-dropdown;
+    }
+    @include breakpoint-custom($sub-nav-breakpoint) {
+        @include sub-nav-horizontal;
+        .sub-nav__list {
+            overflow-x: auto;
+            white-space: nowrap;
+            text-align: center;
+        }
+    }
+}
+
+.sub-nav--dropdown {
+    @include sub-nav-dropdown;
+}
+
+.sub-nav--horizontal {
+    @include sub-nav-horizontal;
+    .sub-nav__list {
+        overflow-x: auto;
+        white-space: nowrap;
+        text-align: center;
+    }
+
+}
+

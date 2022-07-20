@@ -1,0 +1,36 @@
+
+.sg-fixed {
+    height: 100vh;
+    position:relative;
+    > * {
+        position: absolute;
+        z-index: 0;
+
+    }
+}
+
+.sg-fixed-small {
+    height: 50vh;
+    position:relative;
+    > * {
+        position: absolute;
+        z-index: 0;
+
+    }
+}
+
+.sg-box {
+    min-height: 100vh;
+}
+
+.sg-box-small {
+    min-height: 50vh;
+}
+
+.sg-pattern-bg {
+    background-color: #eee;
+    background-image: linear-gradient(45deg, gray 25%, transparent 25%, transparent 75%, gray 75%, gray),
+    linear-gradient(45deg, gray 25%, transparent 25%, transparent 75%, gray 75%, gray);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+}

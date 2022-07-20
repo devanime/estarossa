@@ -1,0 +1,21 @@
+{
+    "name": "estarossa.directives.accessibility",
+    "authors": [
+        "DevAnime <devanimecards@gmail.com>"
+    ],
+    "description": "",
+    "dependencies": {
+        "estarossa.common": "../../plugins/estarossa/common"
+    },
+    "main": [
+        "dist/accessibility.js",
+        "scss/main.scss"
+    ],
+    "ignore": [
+        "/js",
+        "/.readme"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}

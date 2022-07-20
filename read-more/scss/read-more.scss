@@ -1,0 +1,86 @@
+@import "variables";
+
+/*
+Read More
+
+Set Design Component
+
+.read-more
+
+markup:
+<div data-gtm="read-more" class="read-more">
+    <p>Etiam porta sem malesuada magna mollis euismod.</p>
+    <div class="read-more__content">
+    <p>Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla. Sed posuere consectetur est at lobortis. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+    <p>Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla. Sed posuere consectetur est at lobortis. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+    <p>Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla. Sed posuere consectetur est at lobortis. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+    </div>
+    <button class="read-more__button js-read-more">Read More
+        <span class="icon icon-arrow"><svg><use class="icon-use" xlink:href="/styleguide/images/sprite.svg#icon-arrow"></use></svg></span>
+    </button>
+</div>
+
+Styleguide 4.5
+*/
+
+
+.read-more {
+    @extend .content-box;
+    p {
+        margin: $rm-content-margin-mobile;
+        @include breakpoint-custom($sd-screen-md) {
+            margin: $rm-content-margin-desktop;
+        }
+    }
+    &__content {
+        @extend .content-box;
+        display: none;
+    }
+    &--expanded {
+        .read-more__content {
+            display: block;
+        }
+    }
+    &__button {
+        display: $rm-button-display;
+        @include fluid-type($rm-button-font-size-mobile, $rm-button-font-size-desktop);
+        -webkit-appearance: none;
+        cursor: pointer;
+        outline: $rm-button-outline;
+        background: $rm-button-bg;
+        border: $rm-button-border;
+        color: $rm-button-color;
+        text-decoration: $rm-button-text-decoration;
+        font-weight: $rm-button-font-weight;
+        padding: $rm-button-padding-mobile;
+        margin: $rm-button-margin-mobile;
+        text-transform: $rm-button-text-transform;
+        @include breakpoint-custom($sd-screen-md) {
+            padding: $rm-button-padding-desktop;
+            margin: $rm-button-margin-desktop;
+        }
+    }
+    &__icon {
+        margin-left: $rm-button-icon-margin-left;
+        svg {
+            width: $rm-button-icon-width;
+            height: $rm-button-icon-height;
+        }
+    }
+    &--pull-icon-left {
+        .read-more {
+            &__button {
+                display: flex;
+                align-items: center;
+            }
+            &__button-text {
+                order: 2;
+            }
+            &__icon {
+                order: 1;
+                margin-left: 0;
+                margin-right: $rm-button-icon-margin-left;
+            }
+        }
+    }
+}

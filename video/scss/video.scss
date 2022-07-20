@@ -1,0 +1,10 @@
+@import "variables";
+@import "mixins";
+@import "video-thumb";
+@import "video-player";
+@import "video-meta";
+.video-player-wrap {
+    max-width: 450px;
+    margin: 0 auto;
+}
+

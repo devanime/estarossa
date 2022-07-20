@@ -1,0 +1,20 @@
+{
+    "name": "estarossa.nav-menu",
+    "authors": [
+        "DevAnime <devanimecards@gmail.com>"
+    ],
+    "description": "",
+    "dependencies": {
+        "estarossa.common": "../../plugins/estarossa/common"
+    },
+    "main": [
+        "js/nav-menu.js",
+        "scss/nav-menu.scss"
+    ],
+    "ignore": [
+        "/php"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}

@@ -1,0 +1,18 @@
+$toggle-z-index: 1000 !default;
+$toggle-animation-in: fade-in !default;
+$toggle-animation-out: fade-out !default;
+
+[data-toggle-target] {
+    height: 0;
+    @include transition-set($toggle-animation-out);
+    &.toggle-active {
+        height: auto;
+        @include transition-set(fade-in);
+    }
+    &:not(.toggle-active) {
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: hidden !important;
+    }
+}
+

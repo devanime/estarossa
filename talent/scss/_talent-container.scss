@@ -1,0 +1,83 @@
+/*
+Talent Container
+
+Multiple Talent Cards in rows with tabs for multiple talent types
+
+markup:
+<div class="talent-card-container">
+    <div class="talent-container__tabs">
+        <div class="sub-nav sub-nav--horizontal">
+            <ul class="sub-nav__list" role="tablist">
+                <li class="sub-nav__item sub-nav__item--active"><a href="#cast">Cast</a></li>
+                <li class="sub-nav__item"><a href="#creative">Creative</a></li>
+                <li class="sub-nav__item"><a href="#producers">Producers</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="talent-container__grids">
+        <div class="talent-container__grid toggle-active" data-toggle-target="cast" data-toggle-default>
+            <div class="talent-container__row">
+                <sg-insert>4.8.1</sg-insert>
+                <sg-insert>4.8.1</sg-insert>
+                <sg-insert>4.8.1</sg-insert>
+            </div>
+            <div class="talent-container__row">
+                <sg-insert>4.8.1</sg-insert>
+                <sg-insert>4.8.1</sg-insert>
+                <sg-insert>4.8.1</sg-insert>
+            </div>
+        </div>
+    </div>
+</div>
+
+Styleguide 4.8.2
+*/
+
+@import 'variables';
+
+.talent-container {
+    max-width: $talent-container-max-width;
+    margin: $talent-container-margin;
+
+    &__row {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: $talent-justify-cards-mobile;
+        align-items: $talent-default-align-cards-mobile;
+        @include breakpoint-custom($talent-container-breakpoint) {
+            justify-content: $talent-justify-cards;
+            align-items: $talent-default-align-cards;
+        }
+
+        &--lead-card {
+            justify-content: $talent-lead-justify-cards;
+            .talent-container__card {
+                max-width: $talent-lead-card-max-width;
+                width: 100%;
+                @include breakpoint-custom($talent-container-breakpoint) {
+                    margin: 0 $talent-card-spacing-margin*0.5 $talent-lead-margin-bottom;
+                }
+            }
+        }
+    }
+
+    &__tabs {
+        margin-bottom: $talent-card-spacing-margin*1.25;
+    }
+
+    &__card {
+        width: 100%;
+        max-width: $talent-card-max-width;
+        @include breakpoint-custom($talent-container-breakpoint) {
+            max-width: $talent-card-max-width-sm;
+            width: calc( (100% / #{$talent-cards-per-row}) - #{$talent-card-spacing-margin} ) ;
+            margin: 0 $talent-card-spacing-margin*0.25;
+        }
+    }
+}
+
+
+
+
+
+

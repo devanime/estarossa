@@ -1,0 +1,85 @@
+.tour-city {
+    text-align: center;
+    background: $tour-city-bg;
+    padding: $tour-city-padding-mobile;
+    margin-bottom: $tour-city-margin-bottom;
+    @include breakpoint-custom($tour-breakpoint) {
+        display: table-row;
+        text-align: left;
+        background: none;
+        padding: $tour-city-padding-desktop;
+        margin-bottom: 0;
+    }
+    &__column {
+        @include fluid-type($tour-city-column-font-size-mobile, $tour-city-column-font-size-desktop);
+        padding: $tour-city-column-padding-mobile;
+        @include breakpoint-custom($tour-breakpoint) {
+            position: relative;
+            display: table-cell;
+            vertical-align: middle;
+            background: $tour-city-column-bg;
+            background-clip: padding-box;
+            padding: $tour-city-column-padding-desktop;
+            border-bottom: $tour-city-column-border-bottom;
+            width: $tour-city-column-width;
+            &:after {
+                content:"";
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 1px;
+                height: 100%;
+                background: $tour-city-column-bg;
+            }
+        }
+        &--city {
+            @include fluid-type($tour-city-city-font-size-mobile, $tour-city-city-font-size-desktop);
+            text-transform: $tour-city-city-transform;
+            padding: $tour-city-city-padding-mobile;
+            @include breakpoint-custom($tour-breakpoint) {
+                padding: $tour-city-city-padding-desktop;
+            }
+        }
+        &--date {
+            white-space: nowrap;
+            padding: $tour-city-date-padding-mobile;
+            @include breakpoint-custom($tour-breakpoint) {
+                padding: $tour-city-date-padding-desktop;
+            }
+        }
+        &--venue {
+            padding: $tour-city-venue-padding-mobile;
+            @include breakpoint-custom($tour-breakpoint) {
+                padding: $tour-city-venue-padding-desktop;
+            }
+        }
+        &--cta {
+            @include breakpoint-custom($tour-breakpoint) {
+                text-align: right;
+            }
+        }
+    }
+}
+
+.tour-city-btn {
+    display: inline-block;
+    padding: $tour-city-cta-padding-mobile;
+    margin: $tour-city-cta-margin-mobile;
+    border: $tour-city-cta-border;
+    width: 100%;
+    text-align: center;
+    text-transform: $tour-city-cta-transform;
+    @include breakpoint-custom($tour-breakpoint) {
+        margin: $tour-city-cta-margin-desktop;
+        padding: $tour-city-cta-padding-desktop;
+        max-width: $tour-city-cta-max-width;
+    }
+    &:hover {
+        text-decoration: none;
+    }
+    &--disabled {
+        cursor: not-allowed;
+        opacity: $tour-city-cta-disabled-opacity;
+        background: $tour-city-cta-disabled-bg;
+    }
+}

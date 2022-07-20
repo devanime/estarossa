@@ -1,0 +1,9 @@
+.faq-section {
+    margin-bottom: $faq-section-margin-bottom;
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.faq-card {
+}

@@ -1,0 +1,54 @@
+{
+    "name": "devanime/estarossa",
+    "description": "A DevAnime plugin for front-end libraries and frameworks.",
+    "authors": [
+        {
+            "name": "DevAnime",
+            "email": "devanimecards@gmail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        },
+        {
+            "type": "composer",
+            "url": "https://packages.devanimecards.io"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "DevAnime\\Estarossa\\Modal\\": "modal/php",
+            "DevAnime\\Estarossa\\NavMenu\\": "nav-menu/php",
+            "DevAnime\\Estarossa\\LazyImage\\": "lazy-image/php",
+            "DevAnime\\Estarossa\\TagManager\\": "tag-manager/php",
+            "DevAnime\\Estarossa\\SubNav\\": "sub-nav/php",
+            "DevAnime\\Estarossa\\MediaCarousel\\": "media-carousel/php",
+            "DevAnime\\Estarossa\\Icon\\": "icon/php",
+            "DevAnime\\Estarossa\\ImageCaption\\": "image-caption/php",
+            "DevAnime\\Estarossa\\Message\\": "message/php",
+            "DevAnime\\Estarossa\\Tour\\": "tour/php",
+            "DevAnime\\Estarossa\\ContentBlock\\": "content-block/php",
+            "DevAnime\\Estarossa\\SocialIcons\\": "social-icons/php",
+            "DevAnime\\Estarossa\\ResponsivePicture\\": "responsive-picture/php",
+            "DevAnime\\Estarossa\\CalendarContainer\\": "calendar-container/php",
+            "DevAnime\\Estarossa\\Talent\\": "talent/php",
+            "DevAnime\\Estarossa\\Video\\": "video/php",
+            "DevAnime\\Estarossa\\ReadMore\\": "read-more/php",
+            "DevAnime\\Estarossa\\Accordion\\": "accordion/php",
+            "DevAnime\\Estarossa\\Filters\\": "filters/php",
+            "DevAnime\\Estarossa\\FAQ\\": "faq/php",
+            "DevAnime\\Estarossa\\ContentSlider\\": "content-slider/php",
+            "DevAnime\\Estarossa\\Schema\\": "schema/php",
+            "DevAnime\\Estarossa\\Admin\\": "admin/php"
+        },
+        "files": [
+            "tag-manager/php/functions.php"
+        ]
+    },
+    "type": "wordpress-plugin",
+    "require": {
+        "php": "^7.0"
+    }
+}

@@ -1,0 +1,22 @@
+{
+    "name": "@devanime/estarossa.media-carousel",
+    "version": "2.0.0",
+    "author": "DevAnime <devanimecards@gmail.com>",
+    "private": true,
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ],
+    "main": "dist/media-carousel.js",
+    "files": [
+        "dist/*",
+        "scss/*"
+    ],
+    "dependencies": {
+        "@devanime/estarossa.common": "file:../common",
+        "estarossa.video": "file:../video",
+        "estarossa.directives.owl-a11y": "file:../directives/owl-a11y"
+    }
+}

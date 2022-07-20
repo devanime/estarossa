@@ -1,0 +1,21 @@
+{
+    "name": "estarossa.responsive-picture",
+    "authors": [
+        "DevAnime <devanimecards@gmail.com>"
+    ],
+    "description": "",
+    "comments": [],
+    "dependencies": {
+        "estarossa.common": "../../plugins/estarossa/common"
+    },
+    "main": [
+        "js/responsive-picture.js",
+        "scss/responsive-picture.scss"
+    ],
+    "ignore": [
+        "/php"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}

@@ -1,0 +1,148 @@
+@mixin breakpoint-custom($breakpoint) {
+    @media (min-width: #{$breakpoint}) {
+        @content;
+    }
+}
+
+@mixin breakpoint-max($breakpoint) {
+    @media (max-width: #{$breakpoint}) {
+        @content;
+    }
+}
+
+//backwards-compatibility
+@mixin breakpoint-xs {
+    @include breakpoint-custom($screen-xs) {
+        @content;
+    }
+}
+
+@mixin breakpoint-sm {
+    @include breakpoint-custom($screen-sm) {
+        @content;
+    }
+}
+
+@mixin breakpoint-md {
+    @include breakpoint-custom($screen-md) {
+        @content;
+    }
+}
+
+@mixin breakpoint-lg {
+    @include breakpoint-custom($screen-lg) {
+        @content;
+    }
+}
+
+@mixin fluid-val($properties, $min-val, $max-val, $min-vw: $fluid-val-min-vw , $max-vw: $fluid-val-max-vw, $set-min-bound: true, $set-max-bound: true) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-val);
+    $u4: unit($max-val);
+    @if $u1 == $u2 and $u3 == $u4 {
+        & {
+            @if $set-min-bound {
+                @each $prop in $properties {
+                    #{$prop}: $min-val;
+                }
+            }
+            @if $min-val != $max-val {
+                @media screen and (min-width: $min-vw) and (max-width: $max-vw - 1) {
+                    @each $prop in $properties {
+                        #{$prop}: calc(#{$min-val} + #{multiplier($max-val - $min-val)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+                    }
+                }
+                @if $set-max-bound {
+                    @media screen and (min-width: $max-vw) {
+                        @each $prop in $properties {
+                            #{$prop}: $max-val;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin fluid-type($args...) {
+    $fluid-val-args: join(font-size, $args);
+    @include fluid-val($fluid-val-args...);
+}
+
+@mixin responsive-val($properties, $val-default, $val-responsive, $breakpoint: $responsive-val-breakpoint) {
+    @each $prop in $properties {
+        #{$prop}: $val-default;
+    }
+    @if $val-default != $val-responsive {
+        @media (min-width: #{$breakpoint}) {
+            @each $prop in $properties {
+                #{$prop}: $val-responsive;
+            }
+        }
+    }
+}
+
+@mixin responsive-type($val-default, $val-responsive, $breakpoint: $responsive-val-breakpoint) {
+    @include responsive-val((font-size), $val-default, $val-responsive, $breakpoint);
+}
+
+@mixin fluid-type-spacing($properties: margin-bottom, $min-val: $text-margin, $max-val: $text-margin-desktop) {
+    @include fluid-val($properties, $min-val, $max-val);
+}
+
+@mixin list-unstyled {
+    padding-left: 0;
+    list-style: none;
+}
+
+@mixin clearfix() {
+    &::after {
+        display: block;
+        clear: both;
+        content: "";
+    }
+}
+
+
+/**
+Only accurate method for ensuring recursive first/last child selection:
+.content-card {
+    @include recursive-descendant() {
+        margin-top: 0 !important;
+    }
+    @include recursive-descendant(last) {
+        margin-bottom: 0 !important;
+    }
+    @include recursive-descendant('> nth-child(2)') {
+        color: yellow;
+    }
+}
+*/
+@mixin recursive-descendant($element: first, $count: 3) {
+    $props: (
+        first: "> :first-child",
+        last: "> :last-child"
+    );
+    $prop: if(map-has-key($props, $element), #{map-get($props, $element)}, $element);
+    $sel: $prop;
+    @for $i from 1 through $count {
+        $sel: if($i == 1, $prop, selector-nest($sel, $prop));
+
+        #{$sel} {
+            @content;
+        }
+    }
+}
+
+@mixin font-awesome() {
+    font-family: Font Awesome\ 5 Free;
+    font-weight: 900;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}

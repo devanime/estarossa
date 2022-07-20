@@ -1,0 +1,179 @@
+/*
+Video Thumb
+
+The complete video player component.
+
+.video-thumb                   - Default Style
+.video-thumb--match-aspect     - Match Aspect State
+
+markup:
+<a class="video-thumb {$modifiers} js-modal-trigger video-thumb--loaded video--loaded" href="#" style="padding-top: 56.25%;">
+    <span class="video-thumb__bg" style="background-image: url(/styleguide/images/fpo.jpg);"></span>
+    <span class="video-thumb__icon">
+        <span class="video-thumb__circle">
+            <svg class="video-thumb__arrow" viewBox="0 0 80 80">
+                <polygon stroke-linejoin="round" stroke-width="10" points="10,10 70,40 10,70 "></polygon>
+            </svg>
+        </span>
+    </span>
+</a>
+
+Styleguide 4.7.1
+*/
+
+.video-thumb {
+    @extend %aspect-ratio;
+    background: $video-thumb-bg;
+    cursor: pointer;
+    transition: opacity 400ms;
+
+    &:after {
+        content: "";
+        @include spinner();
+    }
+
+    &.video--loading {
+        //pointer-events: none;
+    }
+
+    &.video--loaded {
+        &:after {
+            display: none;
+        }
+    }
+
+    &__bg {
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: center center no-repeat;
+        background-size: cover;
+        //opacity: 0;
+        transition: all 250ms;
+
+        .video--loaded & {
+            //opacity: 1;
+        }
+    }
+
+    &__icon {
+        @extend %center-align;
+        @if $video-play-icon-position == "bottom-left" {
+            left: 0;
+            top: auto;
+            bottom: 0;
+            margin-left: 2%;
+            margin-bottom: 2%;
+        }
+        width: $video-play-icon-width;
+        max-width: $video-play-icon-max-width;
+        opacity: 0;
+        transition: opacity 750ms;
+
+        .video--loaded & {
+            opacity: 1;
+        }
+    }
+    &__yt {
+        @extend %center-align;
+        width: 100%;
+        opacity: 0.85;
+        transition: opacity 400ms, color 400ms;
+        height: 0;
+        padding-top: 70.5%;
+        @if $video-play-icon-position == "bottom-left" {
+            transform: translateY(-100%);
+        }
+        svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .video-thumb--light & {
+            fill: white;
+            color: $youtube-dark;
+        }
+        .video-thumb--dark & {
+            fill: transparent;
+            color: $youtube-light;
+        }
+    }
+
+    &__circle {
+        @extend %center-align;
+        box-sizing: content-box;
+        width: 100%;
+        height: 0;
+        padding-top: 100%;
+        border-radius: 50%;
+        background: $video-play-circle-color;
+        box-shadow: $video-play-circle-box-shadow;
+        transition: background-color 120ms;
+        @if $video-play-icon-position == "bottom-left" {
+            transform: translateY(-100%);
+        }
+    }
+
+    &__arrow, &__pause {
+        @extend %center-align;
+        width: 50%;
+        left: 57%;
+        transition: color 400ms, opacity 250ms;
+        color: $video-play-arrow-color;
+        fill: currentColor;
+        @if $video-play-arrow-rounded {
+            stroke: currentColor;
+        } @else {
+            stroke: transparent;
+        }
+    }
+
+    &__arrow {
+        .video-thumb--playing & {
+            opacity: 0;
+        }
+    }
+
+    &__pause {
+        opacity: 0;
+
+        .video-thumb--playing & {
+            opacity: 1;
+        }
+    }
+
+    &:hover {
+        .video-thumb {
+            &__bg {
+                opacity: $video-thumb-hover-opacity;
+                filter: $video-thumb-hover-filter;
+            }
+            &__yt {
+                opacity: 1;
+            }
+
+            &__circle {
+                background: $video-play-circle-color-hover;
+            }
+
+            &__arrow, &__pause {
+                color: $video-play-arrow-color-hover;
+            }
+        }
+    }
+
+    @if mixin-exists(sd-focus) {
+        @include sd-focus {
+            outline: none;
+            .video-thumb__circle {
+                outline: 1px dotted white;
+                outline-offset: 5px;
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+$responsive-picture-width: 100% !default;
+$responsive-picture-breakpoints: (
+    xs: 0,
+    sm: $sd-screen-sm,
+    md: $sd-screen-md,
+    lg: $sd-screen-lg,
+    xl: $sd-screen-xl
+) !default;
+
+.responsive-picture {
+    display: block;
+    img {
+        opacity: 1;
+        transition: opacity 250ms;
+        margin: 0 auto;
+        width: $responsive-picture-width;
+    }
+    &--loading {
+        position: relative;
+        img {
+            opacity: 0;
+        }
+        &:after {
+            content: "";
+            @include spinner();
+        }
+    }
+}
+
+@supports (--custom:property) {
+    .responsive-picture--loading[style*="--rp-aspect-ratio"] img {
+        height: 0;
+    }
+    @each $key, $width in $responsive-picture-breakpoints {
+        .responsive-picture--loading[style*="--rp-aspect-ratio-#{$key}"] img {
+            @include breakpoint-custom($width) {
+                padding-top: calc(100% * (var(--rp-aspect-ratio-#{$key})));
+            }
+        }
+    }
+}

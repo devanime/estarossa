@@ -1,0 +1,21 @@
+{
+    "name": "estarossa.video",
+    "authors": [
+        "DevAnime <devanimecards@gmail.com>"
+    ],
+    "description": "",
+    "dependencies": {
+        "estarossa.common": "../../plugins/estarossa/common"
+    },
+    "main": [
+        "dist/video.js",
+        "scss/video.scss"
+    ],
+    "ignore": [
+        "/php",
+        "/js"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}

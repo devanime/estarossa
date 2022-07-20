@@ -1,0 +1,48 @@
+$cb-breakpoint: $sd-screen-md !default;
+$cb-padding-desktop: 0 !default;
+$cb-padding-mobile: 0 !default;
+$cb-margin-desktop: 0 0 20px !default;
+$cb-margin-mobile: 0 0 10px !default;
+$cb-transform: none !default;
+
+$cb-headline-size-desktop: 28px !default;
+$cb-headline-size-mobile: 22px !default;
+$cb-headline-color: #000 !default;
+$cb-headline-transform: inherit !default;
+$cb-headline-margin-desktop: 0 0 20px !default;
+$cb-headline-margin-mobile: 0 0 10px !default;
+
+$cb-tagline-size-desktop: 24px !default;
+$cb-tagline-size-mobile: 18px !default;
+$cb-tagline-color: $cb-headline-color !default;
+$cb-tagline-transform: inherit !default;
+$cb-tagline-margin-desktop: 0 0 20px !default;
+$cb-tagline-margin-mobile: 0 0 10px !default;
+
+$cb-content-size-desktop: 16px !default;
+$cb-content-size-mobile: 16px !default;
+$cb-content-color: $cb-headline-color !default;
+$cb-content-transform: inherit !default;
+$cb-content-margin-desktop: 0 !default;
+$cb-content-margin-mobile: 0 !default;
+
+$cb-cta-container-margin-mobile: 15px 0 0 !default;
+$cb-cta-container-margin-desktop: 20px 0 0 !default;
+
+//$cb-cta-font-family: inherit !default;
+//$cb-cta-display: inline-block !default;
+//$cb-cta-decoration: none !default;
+//$cb-cta-size-mobile: 16px !default;
+//$cb-cta-size-desktop: 16px !default;
+//$cb-cta-color: $cb-headline-color !default;
+//$cb-cta-background-color: transparent !default;
+//$cb-cta-transform: inherit !default;
+//$cb-cta-letter-spacing: 0 !default;
+//$cb-cta-transition: none !default;
+//$cb-cta-padding-desktop: 10px 25px !default;
+//$cb-cta-padding-mobile: 5px 15px !default;
+$cb-cta-margin-desktop: 0 !default;
+$cb-cta-margin-mobile: 0 !default;
+
+$cb-list-margin-bottom-mobile: 10px !default;
+$cb-list-margin-bottom-desktop: 20px !default;

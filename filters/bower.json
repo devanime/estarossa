@@ -1,0 +1,21 @@
+{
+    "name": "estarossa.filters",
+    "authors": [
+        "DevAnime <devanimecards@gmail.com>",
+    ],
+    "description": "",
+    "dependencies": {
+        "estarossa.common": "../../plugins/estarossa/common"
+    },
+    "main": [
+        "dist/filters.js",
+        "scss/filters.scss"
+    ],
+    "ignore": [
+        "/php",
+        "/js"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}

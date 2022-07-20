@@ -1,0 +1,35 @@
+$root-font-size: 16px !default;
+
+@function reverse($direction) {
+    $direction-map: (top: bottom, bottom: top, left: right, right: left);
+    @return map_get($direction-map, $direction);
+}
+
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@function multiplier($val, $multiplier: $root-font-size) {
+    @if unit($val) == 'rem' {
+        $val: $val * $multiplier;
+    }
+    @return strip-unit($val);
+}
+
+@function str-replace($string, $search, $replace: '') {
+    $index: str-index($string, $search);
+
+    @if $index {
+        @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+
+    @return $string;
+}
+
+@function color-var($var-name, $opacity: 1) {
+    @return #{rgba(var($var-name), $opacity)};
+}
+
+@function negate-var($var-name) {
+    @return #{calc(-1 * var(#{$var-name}))};
+}

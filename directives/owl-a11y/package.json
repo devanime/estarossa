@@ -1,0 +1,17 @@
+{
+    "name": "@devanime/estarossa.directives.owl-a11y",
+    "version": "2.0.0",
+    "author": "DevAnime <devanimecards@gmail.com>",
+    "private": true,
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ],
+    "main": "js/owl-a11y.js",
+    "dependencies": {
+        "owl.carousel": "^2.3.4",
+        "@devanime/estarossa.common": "file:../../common"
+    }
+}

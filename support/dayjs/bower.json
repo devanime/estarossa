@@ -1,0 +1,9 @@
+{
+    "name": "estarossa.support.dayjs",
+    "description": "Dayjs copy for bower integration",
+    "main": [
+        "dayjs.min.js"
+    ],
+    "homepage": "https://day.js.org",
+    "private": true
+}

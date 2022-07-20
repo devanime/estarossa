@@ -1,0 +1,38 @@
+$accessibility-focus-outline: 1px dotted currentColor !default;
+$accessibility-focus-outline-offset: 3px !default;
+$accessibility-focus-outline-offset-btn: -4px !default;
+
+// Text meant only for screen readers
+.screen-reader-text {
+    @extend .sr-only;
+    @extend .sr-only-focusable;
+}
+
+@mixin sd-focus() {
+    .accessibility-on & {
+        &:focus {
+            @content;
+        }
+    }
+}
+
+.accessibility-off {
+    *:focus {
+        outline: none;
+    }
+}
+
+.accessibility-on {
+    *:focus {
+        outline: $accessibility-focus-outline;
+        outline-offset: $accessibility-focus-outline-offset;
+    }
+    .btn:focus,
+    .button:focus {
+        outline-offset: $accessibility-focus-outline-offset-btn;
+    }
+}
+
+[role=button] {
+    cursor: pointer;
+}

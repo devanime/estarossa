@@ -1,0 +1,86 @@
+@import "variables";
+
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+    svg {
+        display: block;
+        width: $icon-svg-size;
+        height: $icon-svg-size;
+    }
+    &-use {
+        fill: currentColor;
+    }
+    &.icon-wide svg {
+        width: $icon-svg-wide-size;
+    }
+    + & {
+        margin-left: $icon-spacing;
+    }
+    &.icon-style-large {
+        font-size: $icon-large-size;
+    }
+    &.icon-style-primary {
+        .icon-use {
+            color: $icon-primary-color;
+        }
+    }
+    &.icon-style-contrast {
+        .icon-use {
+            color: $icon-contrast-color;
+        }
+    }
+}
+.icon-youtube {
+    @extend .icon-wide;
+}
+.icon.icon-style-square {
+    background-color: $icon-square-bg-color;
+    padding: $icon-square-padding;
+    margin-top: -.25em;
+    margin-bottom: -.25em;
+    .icon-use {
+        color: $icon-square-color;
+    }
+    &.icon-style-large {
+        padding: $icon-square-padding-large;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+.icon.icon-style-circle {
+    border-radius: 50%;
+    background-color: $icon-circle-bg-color;
+    padding: $icon-circle-padding;
+    margin-top: -.25em;
+    margin-bottom: -.25em;
+    .icon-use {
+        color: $icon-circle-color;
+    }
+    &.icon-style-large {
+        padding: $icon-circle-padding-large;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+.icon.icon-style-circle-inverted {
+    @extend .icon, .icon-style-circle;
+    background-color: $icon-circle-inv-bg-color;
+    .icon-use {
+        color: $icon-circle-inv-color;
+    }
+}
+.icon.icon-direction {
+    &-down {
+        transform: $icon-direction-down;
+    }
+    &-up {
+        transform: $icon-direction-up;
+    }
+    &-left {
+        transform: $icon-direction-left;
+    }
+    &-right {
+        transform: $icon-direction-right;
+    }
+}

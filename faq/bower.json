@@ -1,0 +1,20 @@
+{
+    "name": "estarossa.faq",
+    "authors": [
+        "DevAnime <devanimecards@gmail.com>"
+    ],
+    "description": "",
+    "dependencies": {
+        "estarossa.common": "../../plugins/estarossa/common",
+        "estarossa.accordion": "../../plugins/estarossa/accordion"
+    },
+    "main": [
+        "scss/main.scss"
+    ],
+    "ignore": [
+        "/php"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}

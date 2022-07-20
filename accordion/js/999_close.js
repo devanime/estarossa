@@ -1,0 +1,1 @@
+})(jQuery, Estarossa, lodash);

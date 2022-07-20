@@ -1,0 +1,25 @@
+$lazy-image-z-index: 1000 !default;
+$lazy-image-loaded-animation: fade-in !default;
+$lazy-image-loaded-animate-duration: 0.5s !default;
+$lazy-image-loaded-animate-timing-function: ease-in-out !default;
+
+[data-lazy-bg] {
+    &:after {
+        content: "";
+        @include spinner();
+    }
+}
+.lazy-image {
+    position: relative;
+    display: block;
+    &:after {
+        content: "";
+        @include spinner();
+    }
+}
+
+.lazy-image-loaded {
+    animation-name: #{$lazy-image-loaded-animation};
+    animation-duration: $lazy-image-loaded-animate-duration;
+    animation-timing-function: $lazy-image-loaded-animate-timing-function;
+}

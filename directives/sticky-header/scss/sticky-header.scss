@@ -1,0 +1,26 @@
+$sticky-header-z-index: 1000 !default;
+$sticky-header-animation: slide-down !default;
+$sticky-header-animate-duration: 0.5s !default;
+$sticky-header-animate-timing-function: ease-in-out !default;
+
+.sticky-header {
+    &--sticky {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        z-index: $sticky-header-z-index !important;
+        animation-name: #{$sticky-header-animation};
+        animation-duration: $sticky-header-animate-duration;
+        animation-timing-function: $sticky-header-animate-timing-function;
+    }
+    &--absolute {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+}
+body.header-offset {
+    padding-top: var(--dynamic__header-offset);
+}

@@ -1,0 +1,1 @@
+(function($, Estarossa, filterableGroupData, _){

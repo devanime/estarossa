@@ -1,0 +1,96 @@
+@import "variables";
+
+.calendar-container {
+    background: $cc-background;
+    padding: $cc-padding-mobile;
+    @include breakpoint-custom($sd-screen-md) {
+        padding: $cc-padding;
+    }
+    &--ticketing-tips {
+        .calendar-container {
+            &__column {
+                &:first-child {
+                    @extend .col-lg-9 !optional;
+                }
+                &:last-child {
+                    @extend .col-lg-3 !optional;
+                }
+            }
+        }
+    }
+    &--swap-columns {
+        .calendar-container {
+            @include breakpoint-custom($sd-screen-xl) {
+                &__container {
+                    display: flex;
+                }
+                &__column {
+                    &:first-child {
+                        order: 2;
+                    }
+                    &:last-child {
+                        order: 1;
+                    }
+                }
+            }
+        }
+    }
+    &__headline {
+        @extend .text--center;
+        > * {
+            color: $cc-headline-color;
+        }
+        padding: $cc-headline-padding-mobile;
+        @include breakpoint-custom($sd-screen-md) {
+            padding: $cc-headline-padding;
+        }
+    }
+    &__container,
+    &__column,
+    &__ticketing-tips,
+    &__additional-tips {
+        @extend .content-box;
+    }
+    &__container {
+        @extend .container;
+        padding: 0;
+        flex-direction: column;
+        @include breakpoint-custom($sd-screen-lg) {
+            flex-direction: row;
+        }
+        @include breakpoint-max($sd-screen-lg - 1) {
+            .calendar-container__column {
+                margin-bottom: $cc-column-gutter-width;
+            }
+        }
+    }
+    &__column {
+        @extend .col-xs-12 !optional;
+    }
+    &__ticketing-tips,
+    &__additional-tips {
+        position: relative;
+        padding: $cc-tips-padding;
+        margin: $cc-tips-margin;
+    }
+    &__ticketing-tips {
+        background: $cc-ticketing-tips-background;
+    }
+    &__additional-tips {
+        background: $cc-additional-tips-background;
+    }
+    .content-block {
+        padding: $cc-cb-padding;
+        margin: $cc-cb-margin;
+        text-align: $cc-cb-align;
+        &__headline {
+            font-size: $cc-cb-headline-font-size;
+            color: $cc-cb-headline-color;
+            margin: $cc-cb-headline-margin;
+        }
+        &__content {
+            color: $cc-cb-content-color;
+            margin: $cc-cb-content-margin;
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "name": "estarossa.calendar-container",
+    "authors": [
+        "DevAnime <devanimecards@gmail.com>"
+    ],
+    "description": "",
+    "dependencies": {
+        "estarossa.common": "../../plugins/estarossa/common"
+    },
+    "main": [
+        "scss/calendar-container.scss"
+    ],
+    "ignore": [
+        "/php"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}

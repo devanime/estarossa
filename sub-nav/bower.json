@@ -1,0 +1,20 @@
+{
+    "name": "estarossa.sub-nav",
+    "authors": [
+        "DevAnime <devanimecards@gmail.com>",
+    ],
+    "description": "",
+    "dependencies": {
+        "estarossa.common": "../../plugins/estarossa/common"
+    },
+    "main": [
+        "js/sub-nav.js",
+        "scss/sub-nav.scss"
+    ],
+    "ignore": [
+        "/php"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}

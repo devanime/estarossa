@@ -1,0 +1,23 @@
+{
+    "name": "estarossa.message",
+    "authors": [
+        "DevAnime <devanimecards@gmail.com>"
+    ],
+    "description": "",
+    "comments": [],
+    "dependencies": {
+        "estarossa.common": "../../plugins/estarossa/common",
+        "estarossa.support.dayjs": "../../plugins/estarossa/support/dayjs",
+        "js-cookie": "^2.2.1"
+    },
+    "main": [
+        "dist/message.js",
+        "scss/message.scss"
+    ],
+    "ignore": [
+        "/php"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}

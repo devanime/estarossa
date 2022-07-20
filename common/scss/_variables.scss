@@ -1,0 +1,33 @@
+$sd-primary: null;
+$sd-screen-sm: null;
+$sd-screen-md: null;
+$sd-screen-lg: null;
+$sd-screen-xl: null;
+
+@if variable-exists(brand-primary) and variable-exists(screen-xs-min) {
+    // Bootstrap 3
+    $sd-primary: $brand-primary !global;
+    $sd-screen-sm: $screen-xs-min !global;
+    $sd-screen-md: $screen-sm-min !global;
+    $sd-screen-lg: $screen-md-min !global;
+    $sd-screen-xl: $screen-lg-min !global;
+} @else {
+    // Bootstrap 4
+    $sd-primary: $primary !global;
+    $sd-screen-sm: $screen-sm !global;
+    $sd-screen-md: $screen-md !global;
+    $sd-screen-lg: $screen-lg !global;
+    $sd-screen-xl: $screen-xl !global;
+}
+
+
+$spacer: 1rem !default;
+$text-margin: $spacer * 0.5 !default;
+$text-margin-desktop: $spacer !default;
+$fluid-val-min-vw: $sd-screen-sm !default;
+$fluid-val-max-vw: $sd-screen-xl !default;
+$responsive-val-breakpoint: $sd-screen-md !default;
+
+$youtube-dark: #282828;
+$youtube-light: #ffffff;
+$youtube-red: #FF0000;

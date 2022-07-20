@@ -1,0 +1,63 @@
+/*
+Talent Card
+
+A single card representing an actor, headshot and role
+
+markup:
+<div class="talent-card">
+    <div class="talent-card__image">
+        <img src="/styleguide/images/fpo-generic.jpg" width="400" height="400" alt="" class="talent-card__headshot">
+    </div>
+    <div class="talent-card__content">
+        <div class="talent-card__content-inner">
+            <h2 class="talent-card__title">Elizabeth Stanley</h2>
+            <p class="talent-card__role">Mary Jane Healy</p>
+            <div class="talent-card__bio">
+                <p><strong>ELIZABETH STANLEY</strong> (<em>Mary Jane Healy</em>) recently starred
+                 in the world premiere of the new musical <em>Jagged Little Pill</em> by Alanis Morissette,
+                 Diablo Cody, and Glen Ballard, directed by Diane Paulus at A.R.T.
+                 She previously appeared on Broadway in the revival of <em>On the Town</em> (Drama Desk Nomination),
+                 <em>Million Dollar Quartet</em>, <em>Cry-Baby</em>, and the Tony Award-Winning revival of
+                 <em>Company</em> as well as the First National Tours of <em>The Bridges of Madison County</em> and <em>Xanadu</em>.
+                 On television, Elizabeth can be seen in “NOS4A2” (upcoming), “FBI,” “The Get Down”, “The Affair,”
+                  “Black Box,” “Made in Jersey,” “Fringe,” “The Chappelle Show,” and “PBS Great Performances – Company.”
+                 </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+Styleguide 4.8.1
+*/
+
+@import 'variables';
+
+.talent-card {
+    text-align: $talent-card-text-align;
+    margin-bottom: $talent-card-spacing-margin;
+    &__image {
+        margin-bottom: $talent-card-spacing-margin;
+    }
+    &__headshot {}
+    &__content-inner {
+        display: flex;
+        flex-flow: column wrap;
+        align-items: center;
+
+    }
+    &__heading {
+    }
+    &__title {
+        @if $talent-card-title-font-size {
+            font-size: $talent-card-title-font-size;
+        }
+    }
+    &__role {
+        @if $talent-card-role-font-size {
+            font-size: $talent-card-role-font-size;
+        }
+    }
+    &__bio {
+        display: none;
+    }
+}

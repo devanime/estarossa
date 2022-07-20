@@ -1,0 +1,57 @@
+$tour-breakpoint: $sd-screen-md !default;
+
+$tour-list-padding-mobile: 10px !default;
+$tour-list-padding-desktop: 10px !default;
+$tour-list-margin-mobile: 0 !default;
+$tour-list-margin-desktop: 0 !default;
+
+$tour-list-headline-font-size-mobile: 22px !default;
+$tour-list-headline-font-size-desktop: 28px !default;
+$tour-list-headline-color: #000 !default;
+$tour-list-headline-margin: inherit !default;
+$tour-list-headline-font-weight: inherit !default;
+$tour-list-headline-align: center !default;
+$tour-list-headline-transform: inherit !default;
+
+$tour-list-headers-display-mobile: none !default;
+$tour-list-headers-display-desktop: table-row-group !default;
+$tour-list-headers-bg: #000 !default;
+$tour-list-headers-padding-mobile: 10px !default;
+$tour-list-headers-padding-desktop: 10px !default;
+$tour-list-headers-margin-mobile: 0 !default;
+$tour-list-headers-margin-desktop: 0 !default;
+
+$tour-city-bg: #000 !default;
+$tour-city-padding-mobile: 25px 15px !default;
+$tour-city-padding-desktop: 0 !default;
+$tour-city-margin-bottom: 2px !default;
+
+$tour-city-column-bg: $tour-city-bg !default;
+$tour-city-column-padding-mobile: 5px 0 !default;
+$tour-city-column-padding-desktop: 10px !default;
+$tour-city-column-font-size-mobile: 18px !default;
+$tour-city-column-font-size-desktop: 20px !default;
+$tour-city-column-width: 25% !default;
+$tour-city-column-border-bottom: 2px solid transparent !default;
+
+$tour-city-city-font-size-mobile: $tour-city-column-font-size-mobile !default;
+$tour-city-city-font-size-desktop: $tour-city-column-font-size-desktop !default;
+$tour-city-city-padding-mobile: $tour-city-column-padding-mobile !default;
+$tour-city-city-padding-desktop: 10px 10px 10px 25px !default;
+$tour-city-city-transform: normal !default;
+
+$tour-city-date-padding-mobile: $tour-city-column-padding-mobile !default;
+$tour-city-date-padding-desktop: $tour-city-column-padding-desktop !default;
+
+$tour-city-venue-padding-mobile: $tour-city-column-padding-mobile !default;
+$tour-city-venue-padding-desktop: $tour-city-column-padding-desktop !default;
+
+$tour-city-cta-padding-mobile: 10px !default;
+$tour-city-cta-padding-desktop: 10px !default;
+$tour-city-cta-margin-mobile: 0 auto !default;
+$tour-city-cta-margin-desktop: 0 !default;
+$tour-city-cta-border: 1px solid #000 !default;
+$tour-city-cta-disabled-opacity: 0.4 !default;
+$tour-city-cta-disabled-bg: transparent !default;
+$tour-city-cta-max-width: 235px !default;
+$tour-city-cta-transform: none !default;

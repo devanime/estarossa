@@ -1,0 +1,16 @@
+.filters {
+    &--show {
+    }
+
+    &--hide {
+        display: none;
+    }
+}
+
+.no-results {
+    display: none;
+    text-align: center;
+    &--show {
+        display: block;
+    }
+}

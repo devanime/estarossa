@@ -1,0 +1,25 @@
+{
+    "name": "estarossa.media-carousel",
+    "authors": [
+        "DevAnime <devanimecards@gmail.com>"
+    ],
+    "description": "",
+    "comments": [
+        "Overrides are not inherited by the theme!",
+        "Please copy the `overrides` property to the theme bower so you can customize using the owl sass variables."
+    ],
+    "dependencies": {
+        "estarossa.video": "../../plugins/estarossa/video",
+        "estarossa.directives.owl-a11y": "../../plugins/estarossa/directives/owl-a11y"
+    },
+    "main": [
+        "dist/media-carousel.js",
+        "scss/media-carousel.scss"
+    ],
+    "ignore": [
+        "/php"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}

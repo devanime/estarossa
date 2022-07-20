@@ -1,0 +1,14 @@
+.video-meta {
+    display: none;
+    margin-top: 20px;
+
+    &--active {
+        display: block;
+    }
+
+    &__title {
+    }
+
+    &__description {
+    }
+}

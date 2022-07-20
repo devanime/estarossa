@@ -1,0 +1,182 @@
+{
+    "key": "group_5b4e52484ee79",
+    "title": "Tag Manager",
+    "fields": [
+        {
+            "key": "field_5b4e5253274b0",
+            "label": "Container IDs",
+            "name": "estarossa_tagmanager_ids",
+            "type": "repeater",
+            "instructions": "It is possible to add multiple GTM containers, but should be kept to a minimum for performance reasons.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add Container",
+            "sub_fields": [
+                {
+                    "key": "field_5b5b22d7ca91d",
+                    "label": "Container ID",
+                    "name": "container_id",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "GTM-XXXXXXX",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5d40835985ecb",
+                    "label": "Enable Optimize Anti-flicker?",
+                    "name": "enable_anti_flicker",
+                    "type": "true_false",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "message": "",
+                    "default_value": 0,
+                    "ui": 0,
+                    "ui_on_text": "",
+                    "ui_off_text": ""
+                }
+            ]
+        },
+        {
+            "key": "field_5b5b237dabac6",
+            "label": "Global State Variables",
+            "name": "estarossa_tagmanager_global_state",
+            "type": "repeater",
+            "instructions": "These values will be pushed into the dataLayer \"scope\" object on every page load.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_5b5b23b0abac7",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add Variable",
+            "sub_fields": [
+                {
+                    "key": "field_5b5b23b0abac7",
+                    "label": "Key",
+                    "name": "key",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_5b5b23bcabac8",
+                    "label": "Value",
+                    "name": "value",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "50",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                }
+            ]
+        },
+        {
+            "key": "field_601ae3c8029f8",
+            "label": "Additional Head Tags",
+            "name": "estarossa_tagmanager_additional_tags",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "",
+            "min": 0,
+            "max": 0,
+            "layout": "table",
+            "button_label": "Add Tag",
+            "sub_fields": [
+                {
+                    "key": "field_601ae3da029f9",
+                    "label": "Tag",
+                    "name": "tag",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 3,
+                    "new_lines": ""
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-tag-manager"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "Set Design Tag Manager Plugin",
+    "modified": 1612375120
+}

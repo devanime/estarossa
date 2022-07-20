@@ -1,0 +1,38 @@
+/*
+Talent
+
+Styleguide 4.8
+*/
+
+// Global
+$talent-justify-cards: center !default;
+$talent-justify-cards-mobile: center !default;
+$talent-default-align-cards: flex-start !default;
+$talent-default-align-cards-mobile: $talent-default-align-cards !default;
+
+// Card Attrs
+$talent-card-max-width: 300px !default;
+$talent-card-max-width-sm: 225px !default;
+$talent-card-spacing-margin: 30px !default;
+$talent-card-text-align: center !default;
+$talent-card-title-font-size: 22px !default;
+$talent-card-role-font-size: 32px !default;
+$talent-card-margin-bottom: 25px !default;
+
+// Layout Option: Lead Cards
+$talent-lead-cards-per-row: 3 !default;
+$talent-lead-card-max-width: $talent-card-max-width !default;
+$talent-lead-justify-cards: $talent-justify-cards !default;
+$talent-lead-margin-bottom: $talent-card-margin-bottom !default;
+
+
+// Container/Grid Layout
+$talent-container-breakpoint: $sd-screen-lg !default;
+$talent-container-max-width: calc( (#{$talent-card-max-width} + #{$talent-card-spacing-margin}) * #{$talent-lead-cards-per-row} ) !default;
+$talent-container-margin: $talent-card-spacing-margin auto $talent-card-spacing-margin*3 !default;
+$talent-cards-per-row: 4 !default;
+$talent-card-spacing: 23px !default;
+$talent-justify-cards: center !default;
+
+// Modal
+$talent-modal-image-width: 35% !default;

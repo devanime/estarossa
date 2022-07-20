@@ -1,0 +1,36 @@
+/*
+Video Player
+
+The complete video player component.
+
+.video-player               - Default Style
+.video-player--inactive     - Inactive State
+
+markup:
+<div class="video-player {$modifiers}">
+    <iframe src="https://www.youtube.com/embed/DQuhA5ZCV9M" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+Styleguide 4.7
+*/
+
+.video-player {
+    @extend %aspect-ratio;
+    transition: padding-top 250ms, max-width 250ms;
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    &--inactive {
+        position: absolute;
+        visibility: hidden;
+        pointer-events: none;
+    }
+    &:before {
+        content: "";
+        @include spinner();
+    }
+}

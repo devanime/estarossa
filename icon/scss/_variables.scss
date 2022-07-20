@@ -1,0 +1,23 @@
+$icon-primary-color: #000 !default;
+$icon-contrast-color: #fff !default;
+$icon-spacing: 1em !default;
+$icon-svg-size: 1.25em !default;
+$icon-svg-wide-size: 2.5em !default;
+$icon-large-size: 1.75em !default;
+
+$icon-square-bg-color: #000 !default;
+$icon-square-color: #fff !default;
+$icon-square-padding: .5em .55em !default;
+$icon-square-padding-large: .375em !default;
+
+$icon-circle-bg-color: #000 !default;
+$icon-circle-color: #fff !default;
+$icon-circle-inv-bg-color: $icon-circle-color !default;
+$icon-circle-inv-color: $icon-circle-bg-color !default;
+$icon-circle-padding: .5em .55em !default;
+$icon-circle-padding-large: .375em !default;
+
+$icon-direction-down: rotate(0deg) !default;
+$icon-direction-up: rotate(180deg) !default;
+$icon-direction-left: rotate(90deg) !default;
+$icon-direction-right: rotate(-90deg) !default;

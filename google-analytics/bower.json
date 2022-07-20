@@ -1,0 +1,16 @@
+{
+    "name": "estarossa.google-analytics",
+    "authors": [
+        "DevAnime <devanimecards@gmail.com>"
+    ],
+    "description": "",
+    "dependencies": {
+        "estarossa.common": "../../plugins/estarossa/common"
+    },
+    "main": [
+        "js/google-analytics.js"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}

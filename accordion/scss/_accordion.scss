@@ -1,0 +1,207 @@
+/*
+Accordion
+
+Set Design Component
+
+markup:
+<div class="accordion">
+    <div class="accordion-panel">
+        <sg-insert>4.4.2-1</sg-insert>
+        <sg-insert>4.4.4</sg-insert>
+    </div>
+    <div class="accordion-panel accordion-panel--expanded">
+        <sg-insert>4.4.2-2</sg-insert>
+        <sg-insert>4.4.4</sg-insert>
+    </div>
+</div>
+
+sg-wrapper:
+<div class="col-12">
+    <sg-wrapper-content/>
+</div>
+
+Styleguide 4.4
+*/
+
+/*
+Accordion - no icons
+
+Variant without collapsed/expanded icons
+
+markup:
+<div class="accordion {$modifiers}">
+    <div class="accordion-panel">
+        <sg-insert>4.4.3</sg-insert>
+        <sg-insert>4.4.4</sg-insert>
+    </div>
+    <div class="accordion-panel accordion-panel--expanded">
+        <sg-insert>4.4.3</sg-insert>
+        <sg-insert>4.4.4</sg-insert>
+    </div>
+</div>
+
+Styleguide 4.4.1
+*/
+
+
+.accordion {
+    //width: $accordion-width;
+    //background-color: $accordion-bg-color;
+    //margin: $accordion-margin;
+}
+
+/*
+Accordion Panel Button, with Icon
+
+$accordion-panel-icon-name - Collapsed
+$accordion-panel-expanded-icon-name - Expanded
+
+markup:
+<h2 class="accordion-panel__heading">
+    <button class="accordion-panel__button">
+        <span class="accordion-panel__headline">Lorum Ipsum</span>
+        <span class="icon icon-{$modifiers} icon-style-contrast">
+        <svg><use class="icon-use" xlink:href="/styleguide/images/sprite.svg#icon-{$modifiers}"></use></svg>
+        </span>
+    </button>
+</h2>
+Styleguide 4.4.2
+*/
+
+/*
+Accordion Panel Button, no icon
+
+markup:
+<h2 class="accordion-panel__heading">
+    <button class="accordion-panel__button">
+        <span class="accordion-panel__headline">Lorum Ipsum</span>
+    </button>
+</h2>
+Styleguide 4.4.3
+*/
+
+/*
+Accordion Content
+
+markup:
+<div class="accordion-panel__content">
+<p>Curabitur blandit tempus porttitor. Donec ullamcorper nulla non metus auctor fringilla. Donec sed odio dui. Sed posuere consectetur est at lobortis. Nullam quis risus eget urna mollis ornare vel eu leo. Sed posuere consectetur est at lobortis. Curabitur blandit tempus porttitor.</p>
+</div>
+
+sg-wrapper:
+<div class="accordion-panel accordion-panel--expanded">
+    <sg-wrapper-content/>
+</div>
+
+Styleguide 4.4.4
+*/
+
+.accordion-panel {
+    @if $accordion-panel-icon-position == 'hanging' {
+        padding-left: 2.5rem;
+        position: relative;
+    }
+    margin-bottom: $accordion-panel-bottom-margin;
+    &--no-transition {
+        overflow: hidden;
+    }
+    &__heading {
+        margin-bottom: $accordion-panel-button-bottom-margin;
+    }
+
+    &__button {
+        display: $accordion-panel-button-display;
+        width: $accordion-panel-button-width;
+        background: $accordion-panel-button-background-color;
+        @if $accordion-panel-icon-position == 'right' {
+            justify-content: space-between;
+
+        } @else {
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            .icon {
+                margin-right: 0.5em;
+            }
+        }
+        @if $accordion-panel-icon-position == 'hanging' {
+            .icon {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        }
+        align-items: center;
+        border: 0;
+        color: $accordion-panel-button-color;
+        font: inherit;
+        line-height: inherit;
+        overflow: visible;
+        padding: 0;
+        text-align: left;
+        text-transform: inherit;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        &::-moz-focus-inner {
+            border: 0;
+            padding: 0;
+        }
+
+        svg {
+            width: $accordion-panel-icon-width;
+            height: $accordion-panel-icon-height;
+        }
+
+        .icon {
+            @if $accordion-panel-icon-transition {
+                svg {
+                    transition: $accordion-panel-icon-transition;
+                }
+            }
+        }
+    }
+
+    &__headline {
+    }
+
+    &__content {
+        visibility: hidden;
+        max-height: 0;
+        transition: all $accordion-panel-animation-closing-duration $accordion-panel-animation-closing-timing;
+        overflow: hidden;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        position: relative;
+        .accordion-panel--no-transition & {
+            transition-duration: 0s !important;
+            visibility: hidden;
+        }
+        > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    &--expanded {
+        .accordion-panel {
+            &__content {
+                visibility: inherit;
+                max-height: none;
+                transition-duration: $accordion-panel-animation-opening-duration;
+                transition-timing-function: $accordion-panel-animation-opening-timing;
+                padding-bottom: $accordion-panel-content-bottom-padding;
+            }
+            &__icon {
+                @if $accordion-panel-icon-transform {
+                    svg {
+                        transform: $accordion-panel-icon-transform;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,19 @@
+$accordion-panel-bottom-margin: 0 !default;
+
+$accordion-panel-button-width: 100% !default;
+$accordion-panel-button-display: flex !default;
+$accordion-panel-button-background-color: none !default;
+$accordion-panel-button-color: inherit !default;
+$accordion-panel-button-bottom-margin: 20px !default;
+
+$accordion-panel-icon-position: 'right' !default; // 'right', 'left', or 'hanging'
+$accordion-panel-icon-width: 1em !default;
+$accordion-panel-icon-height: $accordion-panel-icon-width !default;
+$accordion-panel-icon-transform: rotate(-180deg) !default; // or false
+$accordion-panel-icon-transition: transform .2s cubic-bezier(0, 0.7, 0.3, 1) !default;
+$accordion-panel-content-bottom-padding: $accordion-panel-button-bottom-margin !default;
+
+$accordion-panel-animation-opening-duration: 250ms !default;
+$accordion-panel-animation-opening-timing: cubic-bezier(1, 0, 0.5, 1) !default;
+$accordion-panel-animation-closing-duration: 350ms !default;
+$accordion-panel-animation-closing-timing: cubic-bezier(0, 0.7, 0.3, 1) !default;

@@ -1,0 +1,17 @@
+{
+    "name": "estarossa.directives.sticky-header",
+    "authors": [
+        "DevAnime <devanimecards@gmail.com>",
+    ],
+    "description": "",
+    "dependencies": {
+        "estarossa.common": "../../plugins/estarossa/common"
+    },
+    "main": [
+        "js/sticky-header.js",
+        "scss/sticky-header.scss"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}

@@ -1,0 +1,45 @@
+@import "variables";
+
+.content-slider {
+    .owl-stage {
+        @if $content-slider-vertical-center {
+            display: flex;
+            align-items: center;
+            flex-flow: row wrap;
+        }
+    }
+}
+
+.owl-dots {
+    text-align: center;
+    -webkit-tap-highlight-color: transparent;
+
+
+    button.owl-dot {
+        display: inline-block;
+        zoom: 1;
+        padding: $owl-dot-padding !important;
+        *display: inline;
+
+        span {
+            width: $owl-dot-width;
+            height: $owl-dot-height;
+            background: $owl-dot-background;
+            display: block;
+            -webkit-backface-visibility: visible;
+            transition: opacity 200ms ease, background-color 200ms ease;
+            border-radius: $owl-dot-rounded;
+        }
+
+        &.active {
+            span {
+                background: $owl-dot-background-active;
+            }
+        }
+        &:hover {
+            span {
+                background: $owl-dot-background-hover;
+            }
+        }
+    }
+}

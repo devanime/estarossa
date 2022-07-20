@@ -1,0 +1,20 @@
+{
+    "name": "@devanime/estarossa.faq",
+    "version": "2.0.0",
+    "author": "DevAnime <devanimecards@gmail.com>",
+    "private": true,
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ],
+    "main": "scss/main.scss",
+    "files": [
+        "scss/*"
+    ],
+    "dependencies": {
+        "@devanime/estarossa.common": "file:../common",
+        "@devanime/estarossa.accordion": "file:../accordion"
+    }
+}

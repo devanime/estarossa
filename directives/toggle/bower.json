@@ -1,0 +1,17 @@
+{
+    "name": "estarossa.directives.toggle",
+    "authors": [
+        "DevAnime <devanimecards@gmail.com>"
+    ],
+    "description": "",
+    "dependencies": {
+        "estarossa.common": "../../plugins/estarossa/common"
+    },
+    "main": [
+        "js/toggle.js",
+        "scss/toggle.scss"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}

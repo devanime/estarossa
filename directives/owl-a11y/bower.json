@@ -1,0 +1,28 @@
+{
+    "name": "estarossa.directives.owl-a11y",
+    "authors": [
+        "Geoffrey Roberts",
+        "DevAnime <devanimecards@gmail.com>"
+    ],
+    "description": "Forked from https://github.com/rtrvrtg/owlcarousel2-a11ylayer",
+    "dependencies": {
+        "estarossa.common": "../../plugins/estarossa/common",
+        "owl.carousel": "^2.3.4"
+    },
+    "main": [
+        "js/owl-a11y.js"
+    ],
+    "overrides": {
+        "owl.carousel": {
+            "main": [
+                "src/img/*",
+                "dist/owl.carousel.min.js",
+                "src/scss/owl.carousel.scss",
+                "src/scss/owl.theme.default.scss"
+            ]
+        }
+    },
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}

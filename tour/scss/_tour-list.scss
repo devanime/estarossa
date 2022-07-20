@@ -1,0 +1,53 @@
+.tour-list {
+    padding: $tour-list-padding-mobile;
+    margin: $tour-list-margin-mobile;
+    @include breakpoint-custom($tour-breakpoint) {
+        display: table;
+        width: 100%;
+        overflow: hidden;
+        padding: $tour-list-padding-desktop;
+        margin: $tour-list-margin-desktop;
+    }
+    &__headline {
+        display: block;
+        text-align: $tour-list-headline-align;
+        @include fluid-type($tour-list-headline-font-size-mobile, $tour-list-headline-font-size-desktop);
+        color: $tour-list-headline-color;
+        margin: $tour-list-headline-margin;
+        font-weight: $tour-list-headline-font-weight;
+        text-transform: $tour-list-headline-transform;
+        @include breakpoint-custom($tour-breakpoint) {
+            display: table-caption;
+        }
+    }
+    &__headers {
+        display: $tour-list-headers-display-mobile;
+        text-align: center;
+        padding: $tour-list-headers-padding-mobile;
+        margin: $tour-list-headers-margin-mobile;
+        @include breakpoint-custom($tour-breakpoint) {
+            display: $tour-list-headers-display-desktop;
+            padding: $tour-list-headers-padding-desktop;
+            margin: $tour-list-headers-padding-desktop;
+        }
+    }
+    &__list {
+        @include breakpoint-custom($tour-breakpoint) {
+            display: table-row-group;
+        }
+    }
+    &__row {
+        @include breakpoint-custom($tour-breakpoint) {
+            display: table-row;
+        }
+    }
+    &__column {
+        background: $tour-list-headers-bg;
+        @include breakpoint-custom($tour-breakpoint) {
+            display: table-cell;
+            vertical-align: middle;
+            //border-bottom: $tour-city-border-size solid transparent;
+            background-clip: padding-box;
+        }
+    }
+}

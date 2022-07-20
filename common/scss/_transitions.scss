@@ -1,0 +1,214 @@
+/* Variables */
+
+$transition-duration: 0.25s !default;
+$transition-timing: ease-in-out !default;
+$transition-timing-in: ease-in !default;
+$transition-timing-out: ease-out !default;
+
+$transition-delay: null !default;
+
+$transition-background-duration-in: $transition-duration !default;
+$transition-background-duration-out: $transition-duration !default;
+$transition-background-timing-in: $transition-timing-in !default;
+$transition-background-timing-out: $transition-timing-out !default;
+$transition-background-delay-in: $transition-delay !default;
+$transition-background-delay-out: $transition-delay !default;
+$transition-background-options-in: $transition-background-duration-in $transition-background-timing-in $transition-background-delay-in;
+$transition-background-options-out: $transition-background-duration-out $transition-background-timing-out $transition-background-delay-out;
+
+$transition-fade-duration-in: $transition-duration !default;
+$transition-fade-duration-out: $transition-duration !default;
+$transition-fade-timing-in: $transition-timing-in !default;
+$transition-fade-timing-out: $transition-timing-out !default;
+$transition-fade-delay-in: $transition-delay !default;
+$transition-fade-delay-out: $transition-delay !default;
+$transition-fade-options-in: $transition-fade-duration-in $transition-fade-timing-in $transition-fade-delay-in;
+$transition-fade-options-out: $transition-fade-duration-out $transition-fade-timing-out $transition-fade-delay-out;
+
+$transition-reveal-duration-in: $transition-duration !default;
+$transition-reveal-duration-out: $transition-duration !default;
+$transition-reveal-timing-in: $transition-timing-in !default;
+$transition-reveal-timing-out: $transition-timing-out !default;
+$transition-reveal-delay-in: $transition-delay !default;
+$transition-reveal-delay-out: $transition-delay !default;
+$transition-reveal-options-in: $transition-reveal-duration-in $transition-reveal-timing-in $transition-reveal-delay-in;
+$transition-reveal-options-out: $transition-reveal-duration-out $transition-reveal-timing-out $transition-reveal-delay-out;
+
+$transition-slide-duration-in: $transition-duration !default;
+$transition-slide-duration-out: $transition-duration !default;
+$transition-slide-timing-in: $transition-timing-in !default;
+$transition-slide-timing-out: $transition-timing-out !default;
+$transition-slide-delay-in: $transition-delay !default;
+$transition-slide-delay-out: $transition-delay !default;
+$transition-slide-options-in: $transition-slide-duration-in $transition-slide-timing-in $transition-slide-delay-in;
+$transition-slide-options-out: $transition-slide-duration-out $transition-slide-timing-out $transition-slide-delay-out;
+
+$transition-zoom-duration-in: $transition-duration !default;
+$transition-zoom-duration-out: $transition-duration !default;
+$transition-zoom-timing-in: $transition-timing-in !default;
+$transition-zoom-timing-out: $transition-timing-out !default;
+$transition-zoom-delay-in: $transition-delay !default;
+$transition-zoom-delay-out: $transition-delay !default;
+$transition-zoom-options-in: $transition-zoom-duration-in $transition-zoom-timing-in $transition-zoom-delay-in;
+$transition-zoom-options-out: $transition-zoom-duration-out $transition-zoom-timing-out $transition-zoom-delay-out;
+
+// deprecated
+$transition-duration-in: 0.25s !default;
+$transition-duration-out: 0.25s !default;
+$transition-fade-duration-in: $transition-duration-in !default;
+$transition-fade-duration-out: $transition-duration-out !default;
+$transition-slide-duration-in: $transition-duration-in !default;
+$transition-slide-duration-out: $transition-duration-out !default;
+
+$transition-fade-timing-in: $transition-timing-in !default;
+$transition-fade-timing-out: $transition-timing-out !default;
+$transition-slide-timing-in: $transition-timing-in !default;
+$transition-slide-timing-out: $transition-timing-out !default;
+
+/* Transition Sets */
+
+$transition-background-in: (
+    transitions: (
+        background-color: (options: $transition-background-options-in)
+    )
+);
+$transition-background-out: (
+    transitions: (
+        background-color: (options: $transition-background-options-out)
+    )
+);
+$transition-fade-in: (
+    transitions: (
+        opacity: (value: 1, options: $transition-fade-options-in)
+    )
+);
+$transition-fade-out: (
+    transitions: (
+        opacity: (value: 0, options: $transition-fade-options-out)
+    ),
+    hidden: true
+);
+$transition-reveal-in: (
+    transitions: (
+        max-height: (value: 50vh, options: $transition-reveal-options-in),
+    )
+);
+$transition-reveal-out: (
+    transitions: (
+        max-height: (value: 0, options: $transition-reveal-options-out)
+    ),
+    properties: (overflow: hidden),
+    hidden: true
+);
+$transition-slide-in: (
+    transitions: (
+        transform: (value: translate(0, 0), options: $transition-slide-options-in)
+    ),
+);
+$transition-slide-out--up-viewport: (
+    transitions: (
+        transform: (value: translate(0, -100vh), options: $transition-slide-options-out)
+    ),
+    hidden: true
+);
+$transition-slide-out--up-parent: (
+    transitions: (
+        transform: (value: translate(0, -100%), options: $transition-slide-options-out)
+    ),
+    hidden: true
+);
+/* TODO: Add complete set of slide transitions */
+$transition-zoom-in: (
+    transitions: (
+        transform: (value: scale(1.1), options: $transition-zoom-options-in)
+    )
+);
+$transition-zoom-out: (
+    transitions: (
+        transform: (options: $transition-zoom-options-out)
+    )
+);
+
+$transition-sets: (
+    background-in:  $transition-background-in,
+    background-out: $transition-background-out,
+    fade-in:        $transition-fade-in,
+    fade-out:       $transition-fade-out,
+    reveal-in:      $transition-reveal-in,
+    reveal-out:     $transition-reveal-out,
+    slide-in:       $transition-slide-in,
+    slide-out--up-viewport: $transition-slide-out--up-viewport,
+    slide-out--up-parent:   $transition-slide-out--up-parent,
+    zoom-in:        $transition-zoom-in,
+    zoom-out:       $transition-zoom-out,
+);
+
+/* Mixins */
+
+@mixin transition-build($styles, $duration, $timing) {
+    $transition: '';
+    @for $i from 1 through length($styles) {
+        $ext: '';
+        @if ($i > 1) {
+            $ext: ',';
+        }
+        $transition: nth($styles, $i) #{' ' + $duration + ' ' + $timing + $ext} $transition;
+    }
+    transition: #{$transition};
+}
+
+@mixin transition-in($styles, $duration : $transition-duration-in, $timing : $transition-timing-in) {
+    @include transition-build($styles, $duration, $timing);
+}
+
+@mixin transition-out($styles, $duration : $transition-duration-out, $timing : $transition-timing-out) {
+    @include transition-build($styles, $duration, $timing);
+}
+
+@mixin transition($styles, $duration : $transition-duration, $timing : $transition-timing) {
+    @include transition-build($styles, $duration, $timing);
+}
+
+@function build-transition-set-options($options, $options-overrides) {
+    @if length($options-overrides) > 0 {
+        @for $i from 1 through length($options-overrides) {
+            $override: nth($options-overrides, $i);
+            $options: set-nth($options, $i, $override);
+        }
+    }
+    @return $options;
+}
+
+@function get-transition-set-items($names) {
+    $set-items: ();
+    @each $name in $names {
+        @if map_has_key($transition-sets, $name) {
+            $set-items: append($set-items, map_get($transition-sets, $name));
+        }
+    }
+    @return $set-items;
+}
+
+@mixin transition-set($names, $options-overrides: ()) {
+    $transitions-combined: ();
+    @each $set-item in get-transition-set-items($names) {
+        @each $property, $value in map_get($set-item, properties) {
+            #{$property}: $value;
+        }
+        visibility: if(map_get($set-item, hidden) == true, hidden, visible);
+        $visibility-delay: 0s;
+        @each $transition-property, $config in map_get($set-item, transitions) {
+            #{$transition-property}: map_get($config, value);
+            $options: map_get($config, options);
+            $options: build-transition-set-options(map_get($config, options), $options-overrides);
+            $visibility-delay: nth($options, 1);
+            $transition: join($transition-property, $options, space);
+            $transitions-combined: append($transitions-combined, $transition, comma);
+        }
+        @if map_get($set-item, hidden) == true {
+            $transition: visibility 0s linear $visibility-delay;
+            $transitions-combined: append($transitions-combined, $transition, comma);
+        }
+    }
+    transition: $transitions-combined;
+}

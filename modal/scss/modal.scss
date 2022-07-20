@@ -1,0 +1,158 @@
+/* Variables */
+
+$modal-container-breakpoint: $sd-screen-sm !default;
+$modal-container-box-breakpoint: $sd-screen-lg !default;
+$modal-bg-color: #000 !default;
+$modal-bg-opacity: 0.7 !default;
+$modal-max-width: 980px !default;
+$modal-text-align: center !default;
+$modal-container-bg: #fff !default;
+$modal-container-color: #000 !default;
+$modal-container-mobile-padding: 1rem !default;
+$modal-container-padding: 3rem !default;
+$modal-container-padding-v: $modal-container-padding !default;
+$modal-container-padding-h: $modal-container-padding !default;
+$modal-container-padding: $modal-container-padding-v $modal-container-padding-h !default;
+$modal-z-index: 9999 !default;
+$modal-animation-in: fade-in, slide-in !default;
+$modal-animation-out: fade-out, slide-out--up-viewport !default;
+$modal-box-bg-color: rgba($modal-bg-color, $modal-bg-opacity) !default;
+$modal-box-border-radius: 0 !default;
+$modal-box-container-bg: $modal-container-bg !default;
+$modal-box-size: 80% !default;
+$modal-video-aspect-ratio: 16/9 !default;
+$modal-close-size: 2rem !default;
+$modal-close-color: $modal-container-color !default;
+$modal-close-color-hover: $modal-close-color !default;
+$modal-close-position-top: $modal-container-padding-v - $modal-close-size !default;
+$modal-close-position-right: $modal-container-padding-h - $modal-close-size !default;
+
+// Modal
+//
+// Set Design Component
+//
+// .modal           - Full-viewport background
+// .modal--centered  - Centered content
+// .modal--box      - Centered box (desktop only) with body screen
+//
+//markup:
+// <div class="modal modal--open {$modifiers}">
+// <div class="modal__container">
+// <button class="modal__close" type="button" aria-label="Close Modal">&#10005;</button>
+// <div class="modal__content">
+// <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam dapibus libero leo, vitae faucibus purus euismod sed. Maecenas convallis lacus sapien, at egestas nulla porta a. Proin finibus lacus lectus, at malesuada turpis imperdiet sed. In vitae dapibus quam, eget blandit lorem. Cras imperdiet, quam dictum ornare blandit, odio risus interdum nibh, sit amet vehicula mi orci ut metus. Praesent eu tincidunt felis, non finibus sem. Nulla in pellentesque nibh, id scelerisque odio. Nulla facilisi. Vivamus volutpat sapien lacus, ac egestas est facilisis vel. Suspendisse pretium a felis at accumsan. Mauris tempus mattis sapien, at dictum dui mollis ac. Nunc venenatis, lacus eget dignissim laoreet, turpis felis congue elit, ac feugiat mi velit iaculis nulla. Sed tempus vehicula lectus eu semper. Pellentesque justo dui, commodo eget laoreet vitae, auctor sit amet justo. Pellentesque non viverra arcu, vel mattis justo.</p>
+// <p>Etiam rutrum purus tortor, eu tristique nibh porta sit amet. Ut placerat nibh vitae ex consequat, vitae molestie sapien efficitur. Nulla tincidunt enim nec sapien viverra, nec congue urna placerat. Nulla pellentesque dui at lectus ultrices, ac convallis augue dapibus. Sed ultricies faucibus diam ac congue. Vestibulum sit amet sodales lectus. In blandit mauris a ex pharetra, non rhoncus elit accumsan. Morbi ac diam ut orci cursus pulvinar ac quis mi. Duis blandit vitae sem non lobortis. Nulla aliquam ligula eget iaculis finibus. Suspendisse id venenatis urna, ac convallis neque. Maecenas quis elit vitae mauris tempor tempor non vitae lectus. Nunc magna ipsum, euismod sit amet bibendum at, venenatis vel enim.</p>
+// </div>
+// </div>
+// </div>
+//
+// sg-wrapper:
+// <div class="sg-fixed sg-pattern-bg">
+//   <sg-wrapper-content/>
+// </div>
+//
+// Styleguide 4.1
+
+// Video Modal
+//
+// Modal with fluid 16/9 aspect ratio content
+//
+//markup:
+// <div class="modal modal--video modal--open">
+// <div class="modal__container">
+// <button class="modal__close" type="button" aria-label="Close Modal">&#10005;</button>
+// <div class="modal__content">
+//   <div style="width:100%;padding-top: 56.25%;position:relative">
+//   <iframe frameborder="0" allowfullscreen="1" allow="autoplay; encrypted-media" title="YouTube video player" style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/?autoplay=0&amp;autohide=1&amp;modestbranding=1&amp;rel=0&amp;showinfo=0&amp;controls=0&amp;disablekb=1&amp;enablejsapi=1&amp;iv_load_policy=3"></iframe>
+//   </div>
+// </div>
+// </div>
+// </div>
+//
+// Styleguide 4.1.1
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    z-index: $modal-z-index;
+    backface-visibility: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;  // IE 10+
+    transform: translateY(-100%);
+    @include transition-set($modal-animation-out);
+    &--open {
+        display: flex;
+        transform: translateY(0);
+        @include transition-set($modal-animation-in);
+    }
+    &--box {
+        background: $modal-box-bg-color;
+        @include breakpoint-custom($modal-container-breakpoint) {
+            padding: #{(100 - strip-unit($modal-box-size)) * 0.5}vh 0;
+        }
+    }
+    &__container {
+        position: relative;
+        display: flex;
+        flex-flow: column wrap;
+        width: 100%;
+        //min-height: 100%;
+        padding: $modal-container-mobile-padding;
+        align-items: center;
+        pointer-events: auto;
+        overflow-y: auto;
+        //-webkit-overflow-scrolling: touch;
+        //-ms-overflow-style: none;  // IE 10+
+        background: $modal-container-bg;
+        color: $modal-container-color;
+        @include breakpoint-custom($modal-container-breakpoint) {
+            padding: $modal-container-padding;
+        }
+
+        .modal--box & {
+            background-color: $modal-box-container-bg;
+            border-radius: $modal-box-border-radius;
+            @include breakpoint-custom($modal-container-box-breakpoint) {
+                width: $modal-box-size;
+                max-width: $modal-max-width;
+                height: auto;
+                margin: auto;
+                //max-height: $modal-box-size;
+            }
+        }
+        &::-webkit-scrollbar {
+            display: none;  // Safari and Chrome
+        }
+    }
+    &__content {
+        width: 100%;
+        max-width: $modal-max-width;
+        text-align: $modal-text-align;
+        margin: auto;
+    }
+    &__close {
+        @extend %btn-reset;
+        position: absolute;
+        z-index: 1;
+        top: $modal-close-position-top;
+        right: $modal-close-position-right;
+        height: $modal-close-size;
+        width: $modal-close-size;
+        line-height: $modal-close-size;
+        font-size: $modal-close-size;
+        color: $modal-close-color;
+        text-align: center;
+        overflow: hidden;
+        &:hover,
+        &:active,
+        &:focus {
+            color: $modal-close-color-hover;
+        }
+    }
+}

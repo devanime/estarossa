@@ -1,0 +1,44 @@
+$skip-nav-bg: $sd-primary !default;
+$skip-nav-color: inherit !default;
+$skip-nav-shadow: 3px 3px 10px 0 rgba(black, 0.4) !default;
+.sd-skip-nav {
+    position: absolute;
+    display: inline-block;
+    overflow: hidden;
+    background: none;
+    border: 1px solid currentColor;
+    padding: 10px;
+    color: $skip-nav-color;
+    font: inherit;
+    line-height: normal;
+    left: -999px;
+    background: $skip-nav-bg;
+    box-shadow: $skip-nav-shadow;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    z-index: -999;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    opacity: 0;
+    transition: transform 250ms, opacity 250ms;
+    transform: translateX(-100%);
+    &::-moz-focus-inner {
+        border: 0;
+        padding: 0;
+    }
+
+    &:focus, &:active {
+        position: absolute;
+        overflow: auto;
+        height: auto;
+        width: auto;
+        z-index: 9999;
+        outline: 0;
+        top: 5px;
+        transform: translateX(0);
+        left: 3px;
+        opacity: 1;
+    }
+}

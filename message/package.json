@@ -1,0 +1,22 @@
+{
+    "name": "@devanime/estarossa.message",
+    "version": "2.0.0",
+    "author": "DevAnime <devanimecards@gmail.com>",
+    "private": true,
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ],
+    "main": "index.js",
+    "files": [
+        "dist/*",
+        "scss/*"
+    ],
+    "dependencies": {
+        "@devanime/estarossa.common": "file:../common",
+        "dayjs": "^1.10.4",
+        "js-cookie": "^2.2.1"
+    }
+}

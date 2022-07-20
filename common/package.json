@@ -1,0 +1,20 @@
+{
+    "name": "@devanime/estarossa.common",
+    "version": "2.0.0",
+    "author": "DevAnime <devanimecards@gmail.com>",
+    "private": true,
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ],
+    "main": "dist/common.js",
+    "files": [
+        "dist/*",
+        "scss/*"
+    ],
+    "dependencies": {
+        "jquery-address": "^1.6.0"
+    }
+}

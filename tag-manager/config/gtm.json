@@ -1,0 +1,9 @@
+{
+    "options": {
+        "tag-manager": {
+            "page_title": "Tag Manager",
+            "menu_title": "GTM",
+            "parent_slug": "options-general.php"
+        }
+    }
+}

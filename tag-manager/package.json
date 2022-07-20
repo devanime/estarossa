@@ -1,0 +1,19 @@
+{
+    "name": "@devanime/estarossa.tag-manager",
+    "version": "2.0.0",
+    "author": "DevAnime <devanimecards@gmail.com>",
+    "private": true,
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "http://opensource.org/licenses/MIT"
+        }
+    ],
+    "main": "js/tagmanager.js",
+    "files": [
+        "js/*"
+    ],
+    "dependencies": {
+        "@devanime/estarossa.common": "file:../common"
+    }
+}

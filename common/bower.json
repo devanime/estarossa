@@ -1,0 +1,21 @@
+{
+    "name": "estarossa.common",
+    "authors": [
+        "DevAnime <devanimecards@gmail.com>"
+    ],
+    "description": "",
+    "dependencies": {
+        "jquery-address": "*"
+    },
+    "main": [
+        "dist/common.js",
+        "scss/main.scss"
+    ],
+    "ignore": [
+        "/js",
+        "/vendor"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}

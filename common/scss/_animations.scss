@@ -1,0 +1,32 @@
+$spinner-size: 4px !default;
+$spinner-width: 14px !default;
+$spinner-color: $sd-primary !default;
+$spinner-color-faded: rgba($spinner-color, 0.3) !default;
+
+@keyframes spinner {
+    0% { transform: rotate(0deg) }
+    to { transform: rotate(1turn) }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slide-down {
+    from { transform: translateY(-100%); }
+    to { transform: translateY(0); }
+}
+
+@mixin spinner($color: $spinner-color, $size: $spinner-size, $width: $spinner-width, $color-faded: $spinner-color-faded) {
+    border: $size solid $color-faded; /* match with border-left */
+    border-left: $size solid $color;
+    animation: spinner 1.1s infinite linear;
+    border-radius: 50%;
+    width: $width; /* match with height for a circle */
+    height: $width;
+    position: absolute;
+    top: calc(50% - ( #{$width + $size} / 2 ));
+    left: calc(50% - ( #{$width + $size} / 2 ));
+    box-sizing: content-box;
+}

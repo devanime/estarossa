@@ -1,0 +1,21 @@
+{
+    "name": "estarossa.tag-manager",
+    "authors": [
+        "DevAnime <devanimecards@gmail.com>"
+    ],
+    "description": "",
+    "dependencies": {
+        "estarossa.common": "../../plugins/estarossa/common"
+    },
+    "main": [
+        "js/tagmanager.js"
+    ],
+    "ignore": [
+        "/config",
+        "/php",
+        "/templates"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}

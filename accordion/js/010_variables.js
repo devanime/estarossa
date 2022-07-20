@@ -1,0 +1,13 @@
+var PANEL_CLASS = 'accordion-panel';
+var PANEL_SELECTOR = '.' + PANEL_CLASS;
+var EXPANDED_CLASS = PANEL_CLASS + '--expanded';
+var EXPANDED_SELECTOR = '.' + EXPANDED_CLASS;
+var BUTTON_SELECTOR = PANEL_SELECTOR + '__button';
+var CONTENT_CLASS = PANEL_CLASS + '__content';
+var CONTENT_SELECTOR = '.' + CONTENT_CLASS;
+var LAYOUT = Estarossa.LAYOUT;
+var LAYOUTEND = Estarossa.LAYOUTEND;
+var addAction = Estarossa.addAction;
+var doAction = Estarossa.doAction;
+var HASH = window.location.hash;
+var TRANSITION_END = Estarossa.TRANSITION_END_EVENT;

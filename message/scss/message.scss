@@ -1,0 +1,114 @@
+$state-success-text:           #3c763d !default;
+$state-success-bg:             #dff0d8 !default;
+$state-success-border:         darken(adjust-hue($state-success-bg, -10), 5%) !default;
+$state-success-cta-color:      inherit !default;
+$state-success-close-color:     inherit !default;
+$state-info-text:              #31708f !default;
+$state-info-bg:                #d9edf7 !default;
+$state-info-border:            darken(adjust-hue($state-info-bg, -10), 7%) !default;
+$state-info-cta-color:         inherit !default;
+$state-info-close-color:     inherit !default;
+$state-warning-text:           #8a6d3b !default;
+$state-warning-bg:             #fcf8e3 !default;
+$state-warning-border:         darken(adjust-hue($state-warning-bg, -10), 5%) !default;
+$state-warning-cta-color:      inherit !default;
+$state-warning-close-color:     inherit !default;
+$state-danger-text:            #a94442 !default;
+$state-danger-bg:              #f2dede !default;
+$state-danger-border:          darken(adjust-hue($state-danger-bg, -10), 5%) !default;
+$state-danger-cta-color:       inherit !default;
+$state-danger-close-color:     inherit !default;
+$message-margin:               0 !default;
+$message-padding:              0.75rem 1.5rem !default;
+$message-border-radius:        0 !default;
+$message-text-align:           center !default;
+$message-cta-decoration:       underline !default;
+$message-close-size:           1.5rem !default;
+$message-close-color:          inherit !default;
+$message-close-color-hover:    $message-close-color !default;
+$message-close-position-top:   .75rem !default;
+$message-close-position-right: 1rem !default;
+
+.message {
+    padding: $message-padding;
+    border-radius: $message-border-radius;
+    text-align: $message-text-align;
+    margin: $message-margin;
+    position: relative;
+    display: none;
+    &--show {
+        display: block;
+    }
+    &--danger {
+        color: $state-danger-text;
+        background-color: $state-danger-bg;
+        border-color: $state-danger-border;
+        a {
+            color: $state-danger-cta-color;
+        }
+        .message__close {
+            color: $state-danger-close-color;
+        }
+    }
+    &--warning {
+        color: $state-warning-text;
+        background-color: $state-warning-bg;
+        border-color: $state-warning-border;
+        a {
+            color: $state-warning-cta-color;
+        }
+        .message__close {
+            color: $state-warning-close-color;
+        }
+    }
+    &--success {
+        color: $state-success-text;
+        background-color: $state-success-bg;
+        border-color: $state-success-border;
+        a {
+            color: $state-success-cta-color;
+        }
+        .message__close {
+            color: $state-info-close-color;
+        }
+    }
+    &--info {
+        color: $state-info-text;
+        background-color: $state-info-bg;
+        border-color: $state-info-border;
+        a {
+            color: $state-info-cta-color;
+        }
+        .message__close {
+            color: $state-info-close-color;
+        }
+    }
+    a {
+        text-decoration: underline;
+    }
+    &__close {
+        @extend %btn-reset;
+        position: absolute;
+        z-index: 1;
+        top: $message-close-position-top;
+        right: $message-close-position-right;
+        height: $message-close-size;
+        width: $message-close-size;
+        line-height: $message-close-size;
+        font-size: $message-close-size;
+        color: $message-close-color;
+        text-align: center;
+        overflow: hidden;
+        pointer-events: auto;
+        &:hover,
+        &:active,
+        &:focus {
+            color: $message-close-color-hover;
+        }
+    }
+    &__content {
+        > *:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

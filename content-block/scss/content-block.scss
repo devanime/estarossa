@@ -1,0 +1,88 @@
+@import "variables";
+
+/*
+Content Block
+
+Content block component.
+
+.content-block                  - Default State
+.content-block--left            - Text Aligned Left
+
+markup:
+<div class="content-block {$modifiers}">
+    <h2 class="content-block__headline">Content Block Title</h2>
+    <div class="content-block__content">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam porta sem malesuada magna mollis euismod. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+    </div>
+    <div class="content-block__cta-container">
+        <a class="content-block__cta" href="#">Button Text</a>
+    </div>
+</div>
+
+Styleguide 4.6
+*/
+
+.content-block {
+    @extend .content-box;
+    text-transform: $cb-transform;
+    padding: $cb-padding-mobile;
+    margin: $cb-margin-mobile;
+    text-align: center;
+    @include breakpoint-custom($cb-breakpoint) {
+        padding: $cb-padding-desktop;
+        margin: $cb-margin-desktop;
+    }
+    &__headline {
+        @include fluid-type($cb-headline-size-mobile, $cb-headline-size-desktop);
+        text-transform: $cb-headline-transform;
+        color: $cb-headline-color;
+        @include breakpoint-custom($cb-breakpoint) {
+            margin: $cb-headline-margin-desktop;
+        }
+    }
+    &__tagline {
+        @include fluid-type($cb-tagline-size-mobile, $cb-tagline-size-desktop);
+        text-transform: $cb-tagline-transform;
+        color: $cb-tagline-color;
+        margin: $cb-tagline-margin-mobile;
+        @include breakpoint-custom($cb-breakpoint) {
+            margin: $cb-tagline-margin-desktop;
+        }
+    }
+    &__content {
+        @extend .content-box;
+        color: $cb-content-color;
+        text-transform: $cb-content-transform;
+        margin: $cb-content-margin-mobile;
+        @include breakpoint-custom($cb-breakpoint) {
+            margin: $cb-content-margin-desktop;
+        }
+        p {
+            @include fluid-type($cb-content-size-mobile, $cb-content-size-desktop);
+        }
+    }
+    &__cta-container {
+        margin: $cb-cta-container-margin-mobile;
+        @include breakpoint-custom($cb-breakpoint) {
+            margin: $cb-cta-container-margin-desktop;
+        }
+    }
+    &__cta {
+        margin: $cb-cta-margin-mobile;
+        @include breakpoint-custom($cb-breakpoint) {
+            margin: $cb-cta-margin-desktop;
+        }
+    }
+    &--left {
+        text-align: left;
+    }
+}
+
+.content-block-list {
+    .content-block {
+        margin-bottom: $cb-list-margin-bottom-mobile;
+        @include breakpoint-custom($cb-breakpoint) {
+            margin-bottom: $cb-list-margin-bottom-desktop;
+        }
+    }
+}

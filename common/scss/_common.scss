@@ -1,0 +1,62 @@
+// Set Design
+//
+// Set Design is a collection of shared front-end components. Components are individually included as needed in a given theme or plugin.
+//
+// Styleguide 4.0
+
+%btn-reset {
+    background: none !important;
+    border: 0 !important;
+    padding: 0 !important;
+    &:hover,
+    &:active,
+    &:active,
+    &:active:hover {
+        background: none !important;
+    }
+}
+
+body.lock-scroll {
+    overflow: hidden;
+    max-height: 100vh;
+}
+
+.content-box {
+    > :first-child {
+        margin-top: 0 !important;
+    }
+    > :last-child {
+        margin-bottom: 0 !important;
+    }
+}
+@if variable-exists(grid-breakpoints) {
+    @each $breakpoint in map-keys($grid-breakpoints) {
+        @include media-breakpoint-up($breakpoint) {
+            $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+            $infix: str-replace($infix, '-', '');
+            @if ($infix != '') {
+                $infix: $infix + '\\:';
+            }
+
+            .#{$infix}text {
+                &--left { text-align: left; }
+                &--right  { text-align: right; }
+                &--center { text-align: center; }
+                &--uppercase { text-transform: uppercase; }
+                &--lowercase { text-transform: lowercase; }
+                &--capitalize { text-transform: capitalize; }
+                &--emphasize { text-transform: uppercase; }
+                &--weightless { font-weight: unset; }
+            }
+        }
+    }
+}
+:target:not(.anchor):before {
+    content: "";
+    display: block;
+    position: relative;
+    width: 0;
+    pointer-events: none;
+    height: var(--dynamic__header-height);
+    margin-top: negate-var(--dynamic__header-height);
+}

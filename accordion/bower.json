@@ -1,0 +1,21 @@
+{
+    "name": "estarossa.accordion",
+    "authors": [
+        "DevAnime <devanimecards@gmail.com>"
+    ],
+    "description": "",
+    "dependencies": {
+        "estarossa.common": "../../plugins/estarossa/common",
+        "estarossa.icon": "../../plugins/estarossa/icon"
+    },
+    "main": [
+        "dist/accordion.js",
+        "scss/main.scss"
+    ],
+    "ignore": [
+        "/php"
+    ],
+    "license": "MIT",
+    "homepage": "",
+    "private": true
+}
