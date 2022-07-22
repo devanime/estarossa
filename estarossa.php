@@ -1,8 +1,8 @@
 <?php
 
 /*
-Plugin Name: Set Design
-Description: Collection of front-end dev libraries and frameworks
+Plugin Name: Estarossa
+Description: The frontend library of reusable components for all website builds.
 Version: 9999
 License: GPL-2.0+
 */
