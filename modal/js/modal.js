@@ -53,7 +53,7 @@ Estarossa(function($, _, window, document) {
         e.preventDefault();
         var $this = $(this);
         var source = $this.data('modal-source');
-        var $source = source ? $this.find(source) : $this.children();
+        var $source = $(source);
         var $target = $($this.data('modal-target'));
         doAction(BUILD_MODAL, $source.clone().removeClass('js-modal-builder'), $target);
     });
