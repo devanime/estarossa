@@ -1,4 +1,4 @@
-Estarossa(function($, _, window, document) {
+Estarossa(function ($, _, window, document) {
     var $body = $('body');
     var $modal = $('.modal');
     var addAction = Estarossa.addAction;
@@ -8,14 +8,14 @@ Estarossa(function($, _, window, document) {
     var HIDE_MODAL = 'hideModal';
     var BUILD_MODAL = 'buildModal';
 
-    $modal.each(function() {
+    $modal.each(function () {
         try {
             var id = this.getAttribute('id');
             $('a[href="#' + id + '"], [data-target="#' + id + '"]').addClass('js-modal-trigger');
         } catch (error) {
         }
     });
-    var openOnLoad = function(hash) {
+    var openOnLoad = function (hash) {
         try {
             if (hash.isset()) {
                 var $requestedModal = $modal.filter('#' + hash.currentId);
@@ -23,12 +23,13 @@ Estarossa(function($, _, window, document) {
                     doAction(SHOW_MODAL, $requestedModal);
                 }
             }
-        } catch (error) {}
+        } catch (error) {
+        }
     };
-    var escHandler = function(){
+    var escHandler = function () {
         doAction(HIDE_MODAL, $('.modal--open'));
     };
-    var setModalLabel = function($modal) {
+    var setModalLabel = function ($modal) {
         var labelledby = $modal.attr('aria-labelledby');
         var $heading = $modal.find('h1, h2, h3, h4, h5, h6').first();
         if (!$heading.attr('id')) {
@@ -37,46 +38,57 @@ Estarossa(function($, _, window, document) {
             $modal.attr('aria-labelledby', $heading.attr('id'));
         }
     };
-    $body.on('click', '.modal', function(e) {
+    $body.on('click', '.modal', function (e) {
         var $target = $(e.target);
         if ($target.hasClass('modal--open') || $target.hasClass('modal__close') || $target.hasClass('js-modal-trigger')) {
             doAction(HIDE_MODAL, $(this));
         }
     });
-    $body.on('click', '.js-modal-trigger', function(e) {
+    $body.on('click', '.js-modal-trigger', function (e) {
         e.preventDefault();
         var $this = $(this);
         var $target = $($this.data('target')).add($($this.attr('href'))).first();
         doAction(SHOW_MODAL, $target);
     });
-    $body.on('click', '.js-modal-builder', function(e) {
+    $body.on('click', '.js-modal-builder', function (e) {
         e.preventDefault();
         var $this = $(this);
         var source = $this.data('modal-source');
-        var $source = $(source);
+        // eslint-disable-next-line no-nested-ternary
+        var $source = $this.parents(source).length ? $this.parents(source) : ($this.find(source) ? $this.find(source) : $this.children());
+        if (!$source.length) {
+            $source = $this.children();
+        }
         var $target = $($this.data('modal-target'));
-        doAction(BUILD_MODAL, $source.clone().removeClass('js-modal-builder'), $target);
+        var $clone = $source.clone();
+        if ($clone.hasClass('js-modal-builder')) {
+            $clone.removeClass('js-modal-builder');
+        } else if ($clone.find('.js-modal-builder').length) {
+            $clone.find('.js-modal-builder').removeClass('js-modal-builder');
+        }
+        doAction(BUILD_MODAL, $clone, $target);
     });
-    addAction(SHOW_MODAL, function($modal) {
+    addAction(SHOW_MODAL, function ($modal) {
         doAction('focusStateInit', $modal);
         setModalLabel($modal);
-        setTimeout(function() {
+        setTimeout(function () {
             $body.addClass('lock-scroll');
         }, 700);
-        setTimeout(function() {
+        setTimeout(function () {
             $modal.addClass('modal--open');
             doAction('focusStateActivate');
         }, 50);
         addAction('key.esc', escHandler);
     });
-    addAction(HIDE_MODAL, function($modal) {
+    addAction(HIDE_MODAL, function ($modal) {
         removeAction('key.esc', escHandler);
         $body.removeClass('lock-scroll');
         $modal.removeClass('modal--open');
         doAction('focusStateReset');
     });
-    addAction(BUILD_MODAL, function($source, $modal) {
+    addAction(BUILD_MODAL, function ($source, $modal) {
         var $content = $modal.find('.modal__content');
+        console.log($content);
         $content.empty().append($source);
         doAction(SHOW_MODAL, $modal);
     });
