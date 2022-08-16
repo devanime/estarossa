@@ -54,9 +54,14 @@ Estarossa(function ($, _, window, document) {
         e.preventDefault();
         var $this = $(this);
         var source = $this.data('modal-source');
-        // eslint-disable-next-line no-nested-ternary
-        var $source = $this.parents(source).length ? $this.parents(source) : ($this.find(source) ? $this.find(source) : $this.children());
-        if (!$source.length) {
+        var $source = '';
+        if ($this.parents(source).length) {
+            $source = $this.parents(source);
+        } else if ($this.find(source).length) {
+            $source = $this.find(source);
+        } else if ($(source).length) {
+            $source = $(source);
+        } else {
             $source = $this.children();
         }
         var $target = $($this.data('modal-target'));
@@ -88,7 +93,6 @@ Estarossa(function ($, _, window, document) {
     });
     addAction(BUILD_MODAL, function ($source, $modal) {
         var $content = $modal.find('.modal__content');
-        console.log($content);
         $content.empty().append($source);
         doAction(SHOW_MODAL, $modal);
     });
